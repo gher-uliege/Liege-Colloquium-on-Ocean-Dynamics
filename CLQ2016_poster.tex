@@ -66,8 +66,10 @@
 
 \addtobeamertemplate{background}{}{%
 \begin{tikzpicture}[remember picture,overlay]
-\node[anchor=north east,yshift=0pt,xshift=-.5cm] at (current page.north east) {\includegraphics[height=.07\textheight]{logo_colloquium}};
-%\node[anchor=north east,yshift=-5cm,opacity=0.2] at (current page.north east) {\includegraphics[height=8cm]{capeghir_bwr2}};
+\node[anchor=north east,yshift=-10pt,xshift=-.5cm] at (current page.north east) {\includegraphics[height=.07\textheight]{logo_colloquium}};
+\node[anchor=north west,yshift=-9cm,xshift=.25cm] at (current page.north west) {\tiny Image credit: ESA};
+
+
 \end{tikzpicture}}
 
 % These lines to keep good colors when viewed with Acrobat Reader
@@ -91,17 +93,17 @@
 
 \begin{tikzpicture}[remember picture,overlay]%
  
-\coordinate (tp1) at (current page.north west);
+\coordinate (tp1) at ([yshift=-.25cm]current page.north west);
 \coordinate (tp2) at ([yshift=-1.85cm]current page.north west);
 \coordinate (tp3) at ([yshift=-1.85cm]current page.north east);
-\coordinate (tp4) at (current page.north east);
+\coordinate (tp4) at ([yshift=-.25cm]current page.north east);
 
 \coordinate (tp5) at (current page.south west);
 \coordinate (tp6) at ([yshift=1.15cm]current page.south west);
 \coordinate (tp7) at ([yshift=1.15cm]current page.south east);
 \coordinate (tp8) at (current page.south east);
 \filldraw[draw=none,fill=white,opacity=0.35] (tp1)--(tp2)--(tp3)--(tp4)--cycle;
-\filldraw[draw=greygher,fill=white,opacity=0.7] (tp5)--(tp6)--(tp7)--(tp8)--cycle;
+\filldraw[draw=greygher,fill=white,opacity=0.6] (tp5)--(tp6)--(tp7)--(tp8)--cycle;
 \end{tikzpicture}
 
 %\vspace*{-.35cm}
@@ -203,7 +205,7 @@
 
 %\vspace{.1cm}
 
-\putlogo{logo_gher2}\seplogo\putlogo{logo_imedea}\seplogo\putlogo{logo_whoi} %\seplogo\putlogo{logo_ulg}
+\putlogo{logo_gher2}\seplogo\putlogo{logo_imedea}\seplogo\putlogo{logo_whoi} %\seplogo\putlogo{logo_ulg}\\
 
 \column{.05\textwidth}
 ~
