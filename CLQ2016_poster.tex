@@ -1,5 +1,4 @@
-\documentclass[final,table,14pt,aspectratio=141]{beamer}
-\usepackage[english]{babel}
+\documentclass[final,table,14pt,aspectratio=43]{beamer}
 \setbeamertemplate{navigation symbols}{}
 \usepackage{graphicx}
 \usepackage{tikz}
@@ -23,7 +22,7 @@
 \setromanfont[Path = /home/ctroupin/.fonts/]{DINM2}
 
 \definecolor{bluegher}{RGB}{4,99,128}  		% blue 
-\definecolor{greygher}{RGB}{185, 185, 185}  	% grey 
+\definecolor{greygher}{RGB}{150, 150, 150}  	% grey 
 \definecolor{redgher}{RGB}{189, 33, 5}  	% red 
 \definecolor{greybackground}{RGB}{235, 235, 235}
 
@@ -32,7 +31,7 @@
 
 \setbeamerfont{title}{size=\scriptsize}
 \setbeamerfont{subtitle}{size=\normalsize}
-\setbeamerfont{date}{size=\footnotesize}
+\setbeamerfont{date}{size=\scriptsize}
 \setbeamercolor{title}{fg=bluegher}
 \setbeamercolor{subtitle}{bg=bluegher,fg=white}
 %\setbeamercolor{background canvas}{bg=greybackground}
@@ -44,8 +43,6 @@
   \usebeamerfont{title}\inserttitle\par
   \usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\usebeamercolor[bg]{subtitle}\insertsubtitle
 }
-
-\newcommand*{\house}[2]{{\fontspec{#1}\symbol{"#2}}}
    
 % ------------------------------------------------
 % LENGTH DEFINITIONS
@@ -61,22 +58,20 @@
 
 \DeclareGraphicsExtensions{.eps,.JPG,.jpg,.pdf,.png,.PNG,.jpeg}
 \graphicspath{
-{/home/ctroupin/Presentations/figures4presentations/logo/},
-{/home/ctroupin/Presentations/201605_CLQ/Circles/}
+{./logos/},
 }
 
 \parindent 0cm
 
 \addtobeamertemplate{background}{}{%
 \begin{tikzpicture}[remember picture,overlay]
-\node[anchor=north east,yshift=0pt,xshift=-.5cm] at (current page.north east) {\includegraphics[height=.07\textheight]{colloquium_logo3}};
+\node[anchor=north east,yshift=0pt,xshift=-.5cm] at (current page.north east) {\includegraphics[height=.07\textheight]{logo_colloquium}};
 \node[anchor=north east,yshift=-5cm,opacity=0.2] at (current page.north east) {\includegraphics[height=8cm]{capeghir_bwr2}};
 \end{tikzpicture}}
 
+% These lines to keep good colors when viewed with Acrobat Reader
 \makeatletter%
-
 \special{pdf: put @thispage <</Group << /S /Transparency /I true /CS /DeviceRGB>> >>}%
-
 \makeatother%
 
 \author{}
@@ -166,16 +161,14 @@
 
 
 \vspace{-0.02\textheight}
-{\fontspec{Quivira.otf}
-{\scriptsize \textcolor{bluegher}{\faCalendarCheckO~~~\insertdate}}\\
-{\scriptsize \textcolor{bluegher}{{\ComputerMouse}~~~\url{http://modb.oce.ulg.ac.be/colloquium}}}\\
-{\scriptsize \textcolor{greygher}{
-\house{Quivira.otf}{1F3E0}~~~University of Liège - Place du 20-Août, 7 - 4000 Liège - Belgium\\ 
-{\rmfamily \Letter}~~~\href{mailto:oceanphys@ulg.ac.be}{oceanphys@ulg.ac.be} \\
-\includegraphics[height=.2cm]{logo_twitter}~~~{\rmfamily@}GHER\_ULg\\
+{ \rmfamily \tiny
+\textcolor{greygher}{\faCalendarCheckO~~~\insertdate}\\
+\textcolor{bluegher}{{\ComputerMouse}~~~\url{http://modb.oce.ulg.ac.be/colloquium}}\\
+\textcolor{greygher}{\faHome~~~University of Liège - Place du 20-Août, 7 - 4000 Liège - Belgium}\\ 
+\Letter~~~\href{mailto:oceanphys@ulg.ac.be}{oceanphys@ulg.ac.be}\\
+\textcolor{greygher}{\faTwitter~~~@GHER\_ULg}\\
 }
-}
-}
+
 \vspace{.25cm}
 {\scriptsize 
 \fcolorbox{black}{redgher}{\textcolor{white}{Deadline for abstract submission: 30th January 2016}}
