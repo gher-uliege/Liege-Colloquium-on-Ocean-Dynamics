@@ -18,9 +18,11 @@
 
 \usepackage{fontspec}
 \defaultfontfeatures{Ligatures=TeX}
-\setmainfont[Path = /home/ctroupin/.fonts/]{Cube-Regular2}
-\setsansfont[Path = /home/ctroupin/.fonts/]{Cube-Regular2}
-\setromanfont[Path = /home/ctroupin/.fonts/]{DINM2}
+%\setmainfont[Path = /home/ctroupin/.fonts/]{Cube-Regular2}
+\setmainfont{Droid Sans}
+\setsansfont{Droid Sans}
+%\setsansfont[Path = /home/ctroupin/.fonts/]{Cube-Regular2}
+%\setromanfont[Path = /home/ctroupin/.fonts/]{DINM2}
 
 \definecolor{bluegher}{RGB}{4,99,128}  		% blue 
 \definecolor{greygher}{RGB}{50, 50, 50}  	% grey 
@@ -67,7 +69,7 @@
 \addtobeamertemplate{background}{}{%
 \begin{tikzpicture}[remember picture,overlay]
 \node[anchor=north east,yshift=-10pt,xshift=-.5cm] at (current page.north east) {\includegraphics[height=.07\textheight]{logo_colloquium}};
-\node[anchor=north west,yshift=-9cm,xshift=.25cm] at (current page.north west) {\tiny Image credit: ESA};
+\node[anchor=north west,yshift=-8.95cm,xshift=.25cm] at (current page.north west) {\tiny Image credit: ESA};
 
 
 \end{tikzpicture}}
@@ -205,7 +207,7 @@
 
 %\vspace{.1cm}
 
-\putlogo{logo_gher2}\seplogo\putlogo{logo_imedea}\seplogo\putlogo{logo_whoi} %\seplogo\putlogo{logo_ulg}\\
+\putlogo{logo_gher}\seplogo\putlogo{logo_imedea}\seplogo\putlogo{logo_whoi} %\seplogo\putlogo{logo_ulg}\\
 
 \column{.05\textwidth}
 ~
