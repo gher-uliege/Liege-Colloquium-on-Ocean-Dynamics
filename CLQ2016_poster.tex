@@ -18,9 +18,11 @@
 
 \usepackage{fontspec}
 \defaultfontfeatures{Ligatures=TeX}
-\setmainfont[Path = /home/ctroupin/.fonts/]{Cube-Regular2}
-\setsansfont[Path = /home/ctroupin/.fonts/]{Cube-Regular2}
-\setromanfont[Path = /home/ctroupin/.fonts/]{DINM2}
+%\setmainfont[Path = /home/ctroupin/.fonts/]{Cube-Regular2}
+\setmainfont{Droid Sans}
+\setsansfont{Droid Sans}
+%\setsansfont[Path = /home/ctroupin/.fonts/]{Cube-Regular2}
+%\setromanfont[Path = /home/ctroupin/.fonts/]{DINM2}
 
 \definecolor{bluegher}{RGB}{4,99,128}  		% blue 
 \definecolor{greygher}{RGB}{50, 50, 50}  	% grey 
@@ -50,7 +52,7 @@
 %\setlength{\textheight}{28cm}
 \setbeamersize{text margin left=10pt,text margin right=10pt}
 
-\newcommand{\seplogo}{\hspace{.35cm}}
+\newcommand{\seplogo}{\hspace{.25cm}}
 \newcommand{\figheight}{.05\textheight}
 \newcommand{\putlogo}[1]{\includegraphics[height=\figheight]{#1}}
 \newcommand{\putlogoB}[1]{\includegraphics[height=1.25cm]{#1}}
@@ -67,7 +69,7 @@
 \addtobeamertemplate{background}{}{%
 \begin{tikzpicture}[remember picture,overlay]
 \node[anchor=north east,yshift=-10pt,xshift=-.5cm] at (current page.north east) {\includegraphics[height=.07\textheight]{logo_colloquium}};
-\node[anchor=north west,yshift=-9cm,xshift=.25cm] at (current page.north west) {\tiny Image credit: ESA};
+\node[anchor=north west,yshift=-8.95cm,xshift=.25cm] at (current page.north west) {\tiny Image credit: ESA};
 
 
 \end{tikzpicture}}
@@ -142,7 +144,7 @@
 \tiny
 \tikz[na, xshift=-1cm] \coordinate (A0); Observations - Modelling - Theory\\
 \tikz[na] \coordinate (A2); Air-sea coupling\\
-\tikz[na, xshift=-1cm] \coordinate (ABC2);\tikz[na] \coordinate (B2); Surface forcing \\
+\tikz[na, xshift=-1cm, yshift=-1ex] \coordinate (ABC2);\tikz[na] \coordinate (B2); Surface forcing \\
 \tikz[na] \coordinate (C2); Remote-sensing \\
 \tikz[na] \coordinate (D2); Fronts  \\
 \tikz[na, xshift=-1cm, yshift=-1ex] \coordinate (DEFG2);\tikz[na] \coordinate (E2); Instabilities \\
@@ -199,21 +201,21 @@
 
 \begin{columns}[totalwidth=1.\textwidth,c]
 
-\column{.2\textwidth}
+\column{.175\textwidth}
 \scriptsize
 %\textcolor{black}{Organised by}
 
 %\vspace{.1cm}
 
-\putlogo{logo_gher2}\seplogo\putlogo{logo_imedea}\seplogo\putlogo{logo_whoi} %\seplogo\putlogo{logo_ulg}\\
+\putlogo{logo_gher}\seplogo\putlogo{logo_imedea}\seplogo\putlogo{logo_whoi} %\seplogo\putlogo{logo_ulg}\\
 
-\column{.05\textwidth}
+\column{.01\textwidth}
 ~
-\column{.75\textwidth}
+\column{.85\textwidth}
 
 \scriptsize
 %with the support of\\
-\putlogo{coq_wallon}\seplogo\putlogo{logo_IOC}\seplogo\putlogo{logoSocib}\seplogo\putlogo{logo_CNES}\seplogo\putlogo{logo_esa}\seplogo \putlogo{logo_nasa}\seplogo\putlogo{logo_onr}\seplogo\putlogo{logo_iugg}%\putlogoB{logo_egu}%\seplogo\putlogo{logo_SCOR}\seplogo
+\putlogo{coq_wallon}\seplogo\putlogo{logo_IOC}\seplogo\putlogo{logoSocib}\seplogo\putlogo{logo_CNES}\seplogo\putlogo{logo_esa}\seplogo \putlogo{logo_nasa}\seplogo\putlogo{logo_onr}\seplogo\putlogo{logo_iugg}\seplogo\putlogo{logo_eumetsat}%\seplogo\putlogo{logo_SCOR}\seplogo
 
 \end{columns}
 
