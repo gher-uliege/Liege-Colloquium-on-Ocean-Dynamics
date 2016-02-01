@@ -22,7 +22,7 @@
 %\setmainfont{Droid Sans}
 %\setsansfont{Droid Sans}
 \setsansfont[Path = /home/ctroupin/.fonts/]{Cube-Regular2}
-%\setromanfont[Path = /home/ctroupin/.fonts/]{DINM2}
+\setromanfont[Path = /home/ctroupin/.fonts/]{DINM2}
 
 \definecolor{bluegher}{RGB}{4,99,128}  		% blue 
 \definecolor{greygher}{RGB}{50, 50, 50}  	% grey 
@@ -52,10 +52,11 @@
 %\setlength{\textheight}{28cm}
 \setbeamersize{text margin left=10pt,text margin right=10pt}
 
-\newcommand{\seplogo}{\hspace{.25cm}}
+\newcommand{\seplogo}{\hspace{.4cm}}
 \newcommand{\figheight}{.05\textheight}
+\newcommand{\figheightB}{.07\textheight}
 \newcommand{\putlogo}[1]{\includegraphics[height=\figheight]{#1}}
-\newcommand{\putlogoB}[1]{\includegraphics[height=1.25cm]{#1}}
+\newcommand{\putlogoB}[1]{\includegraphics[height=\figheightB]{#1}}
 
 \DeclareGraphicsExtensions{.eps,.JPG,.jpg,.pdf,.png,.PNG,.jpeg}
 \graphicspath{
@@ -69,7 +70,7 @@
 \addtobeamertemplate{background}{}{%
 \begin{tikzpicture}[remember picture,overlay]
 \node[anchor=north east,yshift=-10pt,xshift=-.5cm] at (current page.north east) {\includegraphics[height=.07\textheight]{logo_colloquium}};
-\node[anchor=north west,yshift=-8.95cm,xshift=.25cm] at (current page.north west) {\tiny Image credit: ESA};
+\node[anchor=north west,yshift=-8.7cm,xshift=.3cm] at (current page.north west) {\tiny Image credit: ESA};
 
 
 \end{tikzpicture}}
@@ -95,17 +96,17 @@
 
 \begin{tikzpicture}[remember picture,overlay]%
  
-\coordinate (tp1) at ([yshift=-.25cm]current page.north west);
+\coordinate (tp1) at ([yshift=-.4cm]current page.north west);
 \coordinate (tp2) at ([yshift=-1.85cm]current page.north west);
 \coordinate (tp3) at ([yshift=-1.85cm]current page.north east);
-\coordinate (tp4) at ([yshift=-.25cm]current page.north east);
+\coordinate (tp4) at ([yshift=-.4cm]current page.north east);
 
 \coordinate (tp5) at (current page.south west);
-\coordinate (tp6) at ([yshift=1.15cm]current page.south west);
-\coordinate (tp7) at ([yshift=1.15cm]current page.south east);
+\coordinate (tp6) at ([yshift=1.4cm]current page.south west);
+\coordinate (tp7) at ([yshift=1.4cm]current page.south east);
 \coordinate (tp8) at (current page.south east);
 \filldraw[draw=none,fill=white,opacity=0.35] (tp1)--(tp2)--(tp3)--(tp4)--cycle;
-\filldraw[draw=greygher,fill=white,opacity=0.6] (tp5)--(tp6)--(tp7)--(tp8)--cycle;
+\filldraw[draw=greygher,fill=white,opacity=0.7] (tp5)--(tp6)--(tp7)--(tp8)--cycle;
 \end{tikzpicture}
 
 %\vspace*{-.35cm}
@@ -115,7 +116,7 @@
 \column{.5\textwidth}
 
 \begin{tikzpicture}[spy using outlines={circle,greygher,magnification=5,size=1.5cm, connect spies}]
-\node[anchor=south west,inner sep=0] (image) at (0,0) {\pgfimage[interpolate=true,width=.6\textwidth]{main_fig2_resize4}};
+\node[anchor=south west,inner sep=0] (image) at (0,0) {\pgfimage[interpolate=true,width=.6\textwidth]{main_fig2_resize3}};
    
     \begin{scope}[x={(image.south east)},y={(image.north west)}]
 %    \draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1.2,1.2);
@@ -189,33 +190,37 @@
 
 \vspace{.05cm}
 {\scriptsize 
-\fcolorbox{black}{redgher}{\textcolor{white}{Extender deadline for abstracts: 6th February 2016}}
+\fcolorbox{black}{redgher}{\textcolor{white}{Extended deadline for abstracts: 8th February 2016}}
 }
 
-{\scriptsize 
-\href{http://modb.oce.ulg.ac.be/colloquium/2016/#col_travel_grants}{Travel support}: please visit the colloquium web page
-}
-
+%{\scriptsize 
+%\href{http://modb.oce.ulg.ac.be/colloquium/2016/#col_travel_grants}{Travel support}: please visit the colloquium web page
+%}
+\vspace{.6cm}
 \vfill
 %\vspace*{-.25cm}
 
 \begin{columns}[totalwidth=1.\textwidth,c]
 
-\column{.175\textwidth}
+\column{.25\textwidth}
 \scriptsize
 %\textcolor{black}{Organised by}
 
 %\vspace{.1cm}
 
-\putlogo{logo_gher}\seplogo\putlogo{logo_imedea}\seplogo\putlogo{logo_whoi} %\seplogo\putlogo{logo_ulg}\\
+\putlogoB{logo_gher}\seplogo\putlogoB{logo_imedea}\seplogo\putlogoB{logo_whoi} %\seplogo\putlogo{logo_ulg}\\
 
 \column{.01\textwidth}
 ~
-\column{.85\textwidth}
+\column{.725\textwidth}
 
 \scriptsize
 %with the support of\\
-\putlogo{coq_wallon}\seplogo\putlogo{logo_IOC}\seplogo\putlogo{logoSocib}\seplogo\putlogo{logo_CNES}\seplogo\putlogo{logo_esa}\seplogo \putlogo{logo_nasa}\seplogo\putlogo{logo_onr}\seplogo\putlogo{logo_iugg}\seplogo\putlogo{logo_eumetsat}%\seplogo\putlogo{logo_SCOR}\seplogo
+\putlogo{coq_wallon}\seplogo\putlogo{logo_IOC}\seplogo\putlogo{logoSocib}\seplogo\putlogo{logo_CNES}\seplogo\putlogo{logo_esa}\seplogo
+
+\vspace{.04cm}
+
+\putlogo{logo_nasa}\seplogo\putlogo{logo_onr}\seplogo\putlogo{logo_iugg}\seplogo\putlogo{logo_eumetsat}\seplogo\putlogo{logo_scor.pdf}\seplogo
 
 \end{columns}
 
