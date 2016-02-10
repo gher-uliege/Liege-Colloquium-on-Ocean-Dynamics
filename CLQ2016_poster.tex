@@ -52,10 +52,27 @@
 %\setlength{\textheight}{28cm}
 \setbeamersize{text margin left=10pt,text margin right=10pt}
 
-\newcommand{\seplogo}{\hspace{.4cm}}
-\newcommand{\figheight}{.05\textheight}
+\newsavebox{\ximagebox}
+\newlength{\ximageheight}
+\newsavebox{\xglyphbox}
+\newlength{\xglyphheight}
+\newcommand{\xbox}[1]%
+   {\savebox{\ximagebox}{#1}%
+    \settoheight{\ximageheight}{\usebox{\ximagebox}}%
+    \savebox{\xglyphbox}{\char32}%
+    \settoheight{\xglyphheight}{\usebox{\xglyphbox}}%
+    \raisebox{\ximageheight}[0pt][0pt]{\raisebox{-\xglyphheight}[0pt][0pt]{%
+      \makebox[0pt][l]{\usebox{\xglyphbox}}}}%
+    \usebox{\ximagebox}%
+    \raisebox{0pt}[0pt][0pt]{\makebox[0pt][r]{\usebox{\xglyphbox}}}}
+    
+
+
+\newcommand{\seplogo}{\hspace{.45cm}}
+\newcommand{\figheight}{.0625\textheight}
 \newcommand{\figheightB}{.07\textheight}
 \newcommand{\putlogo}[1]{\includegraphics[height=\figheight]{#1}}
+\newcommand{\putlogolink}[2]{\href{#1}{\xbox{\includegraphics[height=\figheight]{#2}}}}
 \newcommand{\putlogoB}[1]{\includegraphics[height=\figheightB]{#1}}
 
 \DeclareGraphicsExtensions{.eps,.JPG,.jpg,.pdf,.png,.PNG,.jpeg}
@@ -70,7 +87,7 @@
 \addtobeamertemplate{background}{}{%
 \begin{tikzpicture}[remember picture,overlay]
 \node[anchor=north east,yshift=-10pt,xshift=-.5cm] at (current page.north east) {\includegraphics[height=.07\textheight]{logo_colloquium}};
-\node[anchor=north west,yshift=-8.7cm,xshift=.3cm] at (current page.north west) {\tiny Image credit: ESA};
+\node[anchor=south west,yshift=1.7cm,xshift=.3cm] at (current page.south west) {\tiny Image credit: ESA};
 
 
 \end{tikzpicture}}
@@ -102,8 +119,8 @@
 \coordinate (tp4) at ([yshift=-.4cm]current page.north east);
 
 \coordinate (tp5) at (current page.south west);
-\coordinate (tp6) at ([yshift=1.4cm]current page.south west);
-\coordinate (tp7) at ([yshift=1.4cm]current page.south east);
+\coordinate (tp6) at ([yshift=1.85cm]current page.south west);
+\coordinate (tp7) at ([yshift=1.85cm]current page.south east);
 \coordinate (tp8) at (current page.south east);
 \filldraw[draw=none,fill=white,opacity=0.35] (tp1)--(tp2)--(tp3)--(tp4)--cycle;
 \filldraw[draw=greygher,fill=white,opacity=0.7] (tp5)--(tp6)--(tp7)--(tp8)--cycle;
@@ -168,7 +185,6 @@
 \path[-o,greygher,thin] (DEFG2) edge [out=0, in=180] (F2);
 \path[-o,greygher,thin] (DEFG2) edge [out=0, in=180] (G2);
 
-
 \path[o-,greygher,thin] (HIJ1) edge [out=0, in=180] (HIJ2);
 \path[-o,greygher,thin] (HIJ2) edge [out=0, in=180] (H2);
 \path[-o,greygher,thin] (HIJ2) edge [out=0, in=180] (I2);
@@ -178,9 +194,8 @@
 
 \end{columns}
 
-
-\vspace{-0.02\textheight}
-{ \rmfamily \tiny
+%\vspace{-0.02\textheight}
+{\rmfamily \scriptsize
 \textcolor{greygher}{\faCalendarCheckO~~~\insertdate}\\
 \textcolor{bluegher}{{\ComputerMouse}~~~\url{http://modb.oce.ulg.ac.be/colloquium}}\\
 \textcolor{greygher}{\faHome~~~University of Liège - Place du 20-Août, 7 - 4000 Liège - Belgium}\\ 
@@ -188,39 +203,48 @@
 \textcolor{greygher}{\faTwitter~~~@GHER\_ULg}\\
 }
 
-\vspace{.05cm}
-{\scriptsize 
-\fcolorbox{black}{redgher}{\textcolor{white}{Extended deadline for abstracts: 8th February 2016}}
-}
+%\vspace{.05cm}
+%{\scriptsize 
+%\fcolorbox{black}{redgher}{\textcolor{white}{Extended deadline for abstracts: 8th February 2016}}
+%}
 
 %{\scriptsize 
 %\href{http://modb.oce.ulg.ac.be/colloquium/2016/#col_travel_grants}{Travel support}: please visit the colloquium web page
 %}
-\vspace{.6cm}
+\vspace{.35cm}
 \vfill
 %\vspace*{-.25cm}
 
 \begin{columns}[totalwidth=1.\textwidth,c]
 
-\column{.25\textwidth}
+\column{.21\textwidth}
 \scriptsize
 %\textcolor{black}{Organised by}
 
 %\vspace{.1cm}
 
-\putlogoB{logo_gher}\seplogo\putlogoB{logo_imedea}\seplogo\putlogoB{logo_whoi} %\seplogo\putlogo{logo_ulg}\\
+\putlogolink{http://modb.oce.ulg.ac.be/}{logo_gher}\seplogo\putlogolink{http://imedea.uib-csic.es/}{logo_imedea}\seplogo\putlogolink{http://www.whoi.edu/	}{logo_whoi} %\seplogo\putlogo{logo_ulg}\\
 
-\column{.01\textwidth}
+\column{.02\textwidth}
 ~
-\column{.725\textwidth}
+\column{.6\textwidth}
 
 \scriptsize
 %with the support of\\
-\putlogo{coq_wallon}\seplogo\putlogo{logo_IOC}\seplogo\putlogo{logoSocib}\seplogo\putlogo{logo_CNES}\seplogo\putlogo{logo_esa}\seplogo
+\putlogolink{http://www.wallonie.be/}{coq_wallon}\seplogo\putlogolink{http://ioc-unesco.org/}{logo_IOC}\seplogo\putlogolink{http://socib.es/}{logoSocib}\seplogo\putlogolink{https://cnes.fr}{logo_CNES}\seplogo\putlogolink{http://www.esa.int/ESA}{logo_esa}
 
-\vspace{.04cm}
+\vspace{.2cm}
 
-\putlogo{logo_nasa}\seplogo\putlogo{logo_onr}\seplogo\putlogo{logo_iugg}\seplogo\putlogo{logo_eumetsat}\seplogo\putlogo{logo_scor.pdf}\seplogo
+\putlogolink{http://www.onr.navy.mil/}{logo_ONR}\seplogo\putlogolink{http://www.nasa.gov/}{logo_nasa}\seplogo\putlogolink{http://www.iugg.org/}{logo_iugg}\seplogo\putlogolink{http://www.eumetsat.int}{logo_eumetsat}\seplogo\putlogolink{http://www.scor-int.org/}{logo_scor.pdf}
+
+%
+
+\column{.01\textwidth}
+~
+
+\column{.18\textwidth}
+\putlogolink{http://marine.copernicus.eu/}{logo_CMEMS.jpg}
+
 
 \end{columns}
 
