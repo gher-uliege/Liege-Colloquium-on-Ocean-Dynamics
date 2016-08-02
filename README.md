@@ -4,9 +4,10 @@ This project was meant to store the LaTeX files used to create the colloquium po
 
 ## Directories
 
-* figures: time evolution of the number of received abstracts and spatial distribution of the abstracts.
-* logos: partners and sponsors, necessary for the poster.
-* notebooks: tools to create the abstract maps and time series.
+* **figures**: time evolution of the number of received abstracts and spatial distribution of the abstracts.
+* **latex**: source to create the poster in pdf, plus 2 images.
+* **logos**: partners and sponsors, necessary for the poster.
+* **notebooks**: tools to create the abstract maps and time series.
 
 ![Colloquium abstract map](./figures/abstractslist2016_map.png?raw=true "Colloquium abstract map")
 
