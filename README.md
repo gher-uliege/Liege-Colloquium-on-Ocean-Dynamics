@@ -16,3 +16,5 @@ This project was meant to store the LaTeX files used to create the colloquium po
 
 The notebooks were run using python 2.7. Basic packages were installed for the plotting.
 
+LaTeX: you need to have the fonts Cube-Regular and DINM2 installed in a directory where LaTeX can find them.
+
