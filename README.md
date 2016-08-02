@@ -4,8 +4,8 @@ This project was meant to store the LaTeX files used to create the colloquium po
 
 ## Directories
 
-* **figures**: time evolution of the number of received abstracts and spatial distribution of the abstracts.
-* **latex**: source to create the poster in pdf, plus 2 images.
+* **figures**: time evolution of the number of received abstracts, spatial distribution of the abstracts and other figures necessary for the poster.
+* **latex**: source to create the poster in pdf.
 * **logos**: partners and sponsors, necessary for the poster.
 * **notebooks**: tools to create the abstract maps and time series.
 
