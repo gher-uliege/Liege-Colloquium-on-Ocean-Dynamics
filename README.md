@@ -11,3 +11,5 @@ This project was meant to store the LaTeX files used to create the colloquium po
 ## Requirements
 
 The notebooks were run using python 2.7. Basic packages were installed for the plotting.
+
+![Alt text](./figures/abstractslist2016_map.png?raw=true "Title")
