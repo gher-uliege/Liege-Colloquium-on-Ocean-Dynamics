@@ -9,7 +9,7 @@ This project was meant to store the LaTeX files used to create the colloquium po
 * **logos**: partners and sponsors, necessary for the poster.
 * **notebooks**: tools to create the abstract maps and time series.
 
-![Colloquium abstract map](./figures/abstractslist2016_map.png?raw=true =300x "Colloquium abstract map")
+![Colloquium abstract map](./figures/abstractslist2016_map.png?raw=true "Colloquium abstract map")
 
 
 ## Requirements
@@ -18,3 +18,4 @@ The notebooks were run using python 2.7. Basic packages were installed for the p
 
 LaTeX: you need to have the fonts Cube-Regular and DINM2 installed in a directory where LaTeX can find them.
 
+![Colloquium poster](./figures/CLQ2016_poster.jpg?raw=true "Colloquium poster")
