@@ -4,9 +4,10 @@ The .tex files have to be compiled with [xelatex](https://en.wikipedia.org/wiki/
 
 In the preambule, the lines
 
- \setsansfont[Path = /home/ctroupin/.fonts/]{Cube-Regular2}
- \setromanfont[Path = /home/ctroupin/.fonts/]{DINM2}
-
+```latex
+\setsansfont[Path = /home/ctroupin/.fonts/]{Cube-Regular2}
+\setromanfont[Path = /home/ctroupin/.fonts/]{DINM2}
+```
 have to be adapted according to your installation.
 
 ### pdf viewer ###
