@@ -1,4 +1,7 @@
 OldVersions/
 abstracts/
+data/
 test*
-
+*.pdf
+.ipynb_checkpoints/
+notebook/.ipynb_checkpoints/
