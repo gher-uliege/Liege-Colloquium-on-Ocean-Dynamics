@@ -1,0 +1,16 @@
+axes.titlesize : 30
+axes.labelsize : 20
+lines.linewidth : 2
+lines.markersize : 7
+xtick.labelsize : 20
+ytick.labelsize : 20
+lines.color : black
+axes.facecolor : 0.8
+axes.labelcolor : grey
+figure.facecolor : white
+grid.linestyle   :   --
+grid.color       : white
+grid.linewidth   :   0.5
+grid.alpha       :   1.0
+font.family      : 'serif'
+font.serif       : 'Times New Roman'
