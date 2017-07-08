@@ -1,0 +1,104 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="UTF-8">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.4.3/Control.FullScreen.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	</head>
+	
+	
+	<body class="">
+
+		<div id="map" style="height:700px"></div>	
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.4.3/Control.FullScreen.min.js"></script>
+		<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+		<script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
+		<script src="https://rawgit.com/Asymmetrik/leaflet-d3/master/dist/leaflet-d3.js" charset="utf-8"></script>
+		<script src="../data/1972-1973.dat"></script>
+
+	
+		<script>
+			
+			var map = L.map('map',
+								{
+								fullscreenControl: true,
+								}
+							).setView([50.855, 4.347], 3);
+			
+			var OpenStreetMap_Mapnik = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				maxZoom: 19,
+				attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+			});
+			
+			var CartoDB = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+				maxZoom: 18, 
+				attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'
+			  });
+			
+			var CartoDB_DarkMatter = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+				attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+				subdomains: 'abcd',
+				maxZoom: 19
+			});
+			
+			var Stamen_Terrain = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.{ext}', {
+				attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+				subdomains: 'abcd',
+				minZoom: 0,
+				maxZoom: 18,
+				ext: 'png'
+			});
+			
+			
+
+			var baseMaps = {
+				"CartoDB No Labels": CartoDB,
+				"CartoDB Dark": CartoDB_DarkMatter,
+				"OpenStreetMap": OpenStreetMap_Mapnik,
+				"Stamen_Terrain": Stamen_Terrain
+			};
+			
+			var heatStyle = {
+				//gradient : {.65: "white", .75:"#FFFF36", .85:"#FF9D00", .9:"#FF1700", .95:"#900000", 1:"black"},
+				minOpacity: 0.75,
+                radius: 10,
+                blur: 5,
+                max: 23.
+			};
+			
+			map.addLayer(CartoDB)
+			
+			coordsPoints = coords.map(function (p) { return [p[0], p[1]]; });
+			coordsPointsHex = coords.map(function (p) { return [p[1], p[0]]; });
+			
+			//var heat = L.heatLayer(coordsPoints, heatStyle).addTo(map);
+			
+			var hexoptions = {
+					radius : 15,
+					opacity: 0.6,
+					duration: 200,
+					//colorScaleExtent: [ 1, 350 ],
+					radiusScaleExtent: [ 1, undefined ],
+					colorRange: [ '#FAFF69', '#F43C1D' ],
+					//colorValue: function(d) { return Math.sqrt(d.length); },
+					radiusRange: [ 10, 15],
+				};
+
+			var hexLayer = L.hexbinLayer(hexoptions);
+			hexLayer.data(coordsPointsHex);
+			hexLayer.addTo(map);
+			
+			L.control.layers(baseMaps).addTo(map);	
+
+
+		</script>
+			
+	
+
+</body></html>
