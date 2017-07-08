@@ -11,8 +11,6 @@ For the 50th Edition (2018), the plan is to have an overview of the previous edi
 * **logos**: partners and sponsors, necessary for the poster.
 * [**notebooks**](./notebook/README.md): tools to create the abstract maps and time series.
 
-<img src="./figures/abstractslist2016_map.png " width="500">
-
 ## Requirements
 
 ### LaTeX
@@ -22,7 +20,9 @@ For the posters/flyers, we use the [`beamer`](https://www.ctan.org/tex-archive/m
 * [marvosym](https://www.ctan.org/pkg/marvosym?lang=en)
 * [fontawesome](https://www.ctan.org/tex-archive/fonts/fontawesome?lang=en)        
 In addition, you need to have the fonts Cube-Regular and DINM2 installed in a directory where LaTeX can find them.
- 
+
+<img src="./figures/CLQ2016_poster.jpg " width="500">
+
 ### Python 
 The first notebooks were run using Python 2.7, while the most recent code is in Python 3.6.     
 Basic packages were installed for the plotting:
@@ -30,5 +30,4 @@ Basic packages were installed for the plotting:
 * [bokeh](http://bokeh.pydata.org)
 * [pandas](http://pandas.pydata.org/)   
 
-
-<img src="./figures/CLQ2016_poster.jpg " width="500">
+<img src="./figures/abstractslist2016_map.png " width="500">
