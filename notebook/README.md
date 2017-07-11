@@ -3,7 +3,7 @@
 The notebooks using [folium](https://github.com/python-visualization/folium/) package were developed with the version 0.1.6.    
 Some part of the code will probably not work with the most recent versions, since some functions were deprecated (e.g., folium.map.geojson).     
 
-<img src="../figures/foliummap.png " width="400">
+<img src="../figures/foliummap.png " width="600">
 
 | Tool              | Description              |
 |  ----------------:|--------------------------|
@@ -13,10 +13,6 @@ Some part of the code will probably not work with the most recent versions, sinc
 |get_coordinates_from_participant_list|Reads a tab separated file containing the author name affiliation, and generate the coordinates corresponding to their institude.|
 |parse-Colloquium-publications|Extract author information and article title using journal web page. |
 |plot_abstracts_map| Create participation map using the IP from the lists of abstract.|
-|plot_countries_matplotlib| |
-|plot_folium_abstract_map2| |
-|plot_folium_abstract_map| |
-|plot_folium_hotels| |
-|plot_folium_participants| |
-|read_csv_participants| |
-|word_analyis_CLQ| |
+|plot_folium_abstract_map|Create a map with the countries color according to the number of received abstracts.|
+|plot_folium_hotels|Create interactive [leaflet](http://leafletjs.com/) map with the hotels and the interesting locations.||
+|read_csv_participants|Read participant information from CSV file.|
