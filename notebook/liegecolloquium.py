@@ -1,3 +1,11 @@
+import os
+import glob
+import logging
+from collections import Counter
+from geopy.geocoders import Nominatim
+geolocator = Nominatim()
+
+
 class Participant(object):
    
  
