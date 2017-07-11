@@ -10,10 +10,9 @@ Some part of the code will probably not work with the most recent versions, sinc
 |abstract_time_bokeh|Bokeh plot of the time series of abstract received. |
 |abstract_time_highchart|Create highcharts plots  of the abstract time series using [pandas-highcharts](https://pypi.python.org/pypi/pandas-highcharts/).|
 |abstract_time|Read the list of abstracts and generate a time series plot. |
-|get_coordinates_from_participant_list| |
-|parse-Colloquium-publications| |
-|plot_abstracts_map| |
-|plot_abstract_type| |
+|get_coordinates_from_participant_list|Reads a tab separated file containing the author name affiliation, and generate the coordinates corresponding to their institude.|
+|parse-Colloquium-publications|Extract author information and article title using journal web page. |
+|plot_abstracts_map| Create participation map using the IP from the lists of abstract.|
 |plot_countries_matplotlib| |
 |plot_folium_abstract_map2| |
 |plot_folium_abstract_map| |
