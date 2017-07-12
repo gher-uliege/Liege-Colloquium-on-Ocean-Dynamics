@@ -9,6 +9,8 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.4.3/Control.FullScreen.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.0.6/MarkerCluster.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.0.6/MarkerCluster.Default.css">
 	</head>
 	
 	
@@ -17,6 +19,7 @@
 		<div id="map" style="height:700px"></div>	
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.4.3/Control.FullScreen.min.js"></script>
+		<script tupe="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.0.6/leaflet.markercluster.js"></script>
 		<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
 		<script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
 		<script src="https://rawgit.com/Asymmetrik/leaflet-d3/master/dist/leaflet-d3.js" charset="utf-8"></script>
@@ -53,9 +56,7 @@
 				minZoom: 0,
 				maxZoom: 18,
 				ext: 'png'
-			});
-			
-			
+			});			
 
 			var baseMaps = {
 				"CartoDB No Labels": CartoDB,
@@ -77,7 +78,18 @@
 			coordsPoints = coords.map(function (p) { return [p[0], p[1]]; });
 			coordsPointsHex = coords.map(function (p) { return [p[1], p[0]]; });
 			
-			//var heat = L.heatLayer(coordsPoints, heatStyle).addTo(map);
+			var markers = L.markerClusterGroup();
+			
+			for (var i = 0; i < coords.length; i++) {
+				var a = coords[i];
+				var marker = L.marker(new L.LatLng(a[0], a[1]));
+				markers.addLayer(marker);
+			}
+			
+			map.addLayer(markers);
+
+			
+			var heatmap = L.heatLayer(coordsPoints, heatStyle);
 			
 			var hexoptions = {
 					radius : 15,
@@ -89,12 +101,20 @@
 					//colorValue: function(d) { return Math.sqrt(d.length); },
 					radiusRange: [ 10, 15],
 				};
+				
+			//L.circleMarker(coords).addTo(map);
 
 			var hexLayer = L.hexbinLayer(hexoptions);
 			hexLayer.data(coordsPointsHex);
-			hexLayer.addTo(map);
+			//hexLayer.addTo(map);
 			
-			L.control.layers(baseMaps).addTo(map);	
+			var overlayers = {
+					"Heat map": heatmap,
+					"Hexbin": hexLayer,
+				};
+				
+			L.control.layers(baseMaps, overlayers, {autoZIndex:true, collapsed:false}).addTo(map);	
+				
 
 
 		</script>
