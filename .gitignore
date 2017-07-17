@@ -1,3 +1,6 @@
+*.swp
+*.aux
+*.bbl
 OldVersions/
 abstracts/
 *.pdf
