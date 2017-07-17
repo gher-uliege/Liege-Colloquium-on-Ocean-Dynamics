@@ -12,9 +12,9 @@ googlev3 = GoogleV3(timeout=100)
 openmapquest = OpenMapQuest(timeout=100)
 
 logloc= logging.getLogger('locator')
-logloc.setLevel(logging.DEBUG)
+logloc.setLevel(logging.INFO)
 ch = logging.StreamHandler()
-ch.setLevel(logging.DEBUG)
+ch.setLevel(logging.INFO)
 logloc.addHandler(ch)
 
 # choose and order your preference for geocoders here
@@ -30,15 +30,24 @@ class Participant(object):
         self.affiliation = affiliation
         self.city = city
         self.country = country
+        self.lon = None
+        self.lat = None
+        self.countryname = None
     
     def __repr__(self):
         return "Participant {0} {1} ({2})".format(self.firstname,
-                                                     self.name,
-                                                     self.country)
+                                                  self.name,
+                                                  self.country)
         
     def replace_country(self):
         dictcountry = {"U.S.A.": "United States of America", 
-                       "The Netherlands": "Nederland"}
+                       "The Netherlands": "Netherlands",
+                       "U.K.": "United Kingdom",
+                       "Republic of Burundi": "Burundi",
+                       "Belgique": "Belgium",
+                       "Côte d'Ivoire": "Ivory Coast",
+                       "Serbia": "Republic of Serbia",
+                       "Sénégal": "Senegal"}
         for k, v in dictcountry.items():
             self.country = self.country.replace(k, v)
             
@@ -51,7 +60,7 @@ class Participant(object):
         i = 0
         lon = None
         lat = None
-
+        
         while not(lon) and not (lat):
 
             # logloc.debug("i = {0}".format(i))
@@ -60,41 +69,27 @@ class Participant(object):
                 location = geocoders[i].geocode(locationstring)
 
                 # if it returns a location
-                if location != None:
+                if location is not None:
                     logloc.debug("Ok with Geocoder: {0}".format(geocoders[i]))
                     # return those values
                     lat = location.latitude
                     lon = location.longitude
+                    countryname = location.raw["display_name"].split(",")[-1].strip()
                 else:
                     logloc.debug("Geocoder {0} did not provide coordinates".format(geocoders[i]))
 
             except:
                 # catch whatever errors, likely timeout, and return null values
-                print("Problem with geocoder {0}".format(geocoders[i]))
+                logloc.debug("Problem with geocoder {0}".format(geocoders[i]))
 
             # Try another geocoder
             i += 1
 
         self.lon = lon
         self.lat = lat
+        self.countryname = countryname
 
         return locationstring
-
-    def affiliation_exist(self, participant_list):
-        """
-        Check if 2 instances of Participant have the same affilation
-        :param participant_list: list of participants
-        """
-        if self.affiliation == other.affiliation:
-            if self.city == self.city:
-                if self.country == self.country:
-                    return True
-                else:
-                    return False
-            else:
-                return False
-        else:
-            return False
 
     
     def write_to(self, filename, sep='\t'):
@@ -103,7 +98,7 @@ class Participant(object):
         """
         with open(filename, 'a') as f:
             f.write(sep.join((self.name, self.firstname, 
-                             self.affiliation, self.country,
+                             self.affiliation, self.countryname,
                              str(self.lat),
                              str(self.lon), "\n"))
                    )
