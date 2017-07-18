@@ -13,13 +13,13 @@
 	 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">	
 		<style>
 		#map {height: 600px}
-		.info { padding: 6px 8px; font: 14px/16px Arial, Helvetica, sans-serif; background: white; background: rgba(255,255,255,0.8); font-size: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } 
-		.info h4 { margin: 0 0 5px; color: #777;font-size: 1.5em}
-		.legend { text-align: left; line-height: 18px; color: #555} .legend i { font-size: 1.5em; width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }</style>
+		.info { padding: 6px 8px; font: 18px/20px Arial, Helvetica, sans-serif; background: white; background: rgba(255,255,255,0.8); font-size: 16px; box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } 
+		.info h4 { margin: 0 0 5px; color: #777;font-size: 2em}
+		.legend { text-align: left; line-height: 18px; color: #555} .legend i { font-size: 2.5em; width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }</style>
 	</head>
 	<body>	
 		<div id="map"></div>
-		<script type="text/javascript" src="../data/ParticipantCountry1972.geojson"></script>
+		<script type="text/javascript" src="../data/ParticipantCountry.geojson"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.4.3/Control.FullScreen.min.js"></script>
 
 
@@ -59,8 +59,8 @@
 			};
 
 			info.update = function (props) {
-				this._div.innerHTML = '<h4>Number of abstracts</h4>' +  (props ?
-					'<b>' + props.name + '</b><br />' + props.abstracts
+				this._div.innerHTML = '<h4>Number of participants</h4>' +  (props ?
+					'<b>' + props.name + '</b><br />' + props.Participants
 					: 'Hover over a country');
 			};
 
@@ -82,7 +82,7 @@
 			
 			function style(feature) {
 				return {
-					fillColor: getColor(feature.properties.abstracts),
+					fillColor: getColor(feature.properties.Participants),
 					weight: .5,
 					opacity: 1,
 					color: 'black',
@@ -125,9 +125,7 @@
 				});
 			}
 			
-			
-			
-			geojson = L.geoJson(countriesData, {
+			geojson = L.geoJson(participants, {
 				style: style,
 				onEachFeature: onEachFeature
 			}).addTo(map);
