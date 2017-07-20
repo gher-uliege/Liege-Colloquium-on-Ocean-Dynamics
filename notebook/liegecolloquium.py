@@ -24,7 +24,7 @@ class Participant(object):
    
  
     def __init__(self, name=None, firstname=None, affiliation=None, city=None, 
-                 country=None, location=None):
+                 country=None, countryname=None, location=None):
         self.name = name
         self.firstname = firstname
         self.affiliation = affiliation
