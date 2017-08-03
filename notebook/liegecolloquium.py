@@ -56,16 +56,17 @@ class Participant(object):
                        "U.K.": "United Kingdom",
                        "Republic of Burundi": "Burundi",
                        "Belgique": "Belgium",
-                       "Russia": "Russian Federation",
+                       #"Russia": "Russian Federation",
+                       "Maroc": "Morocco",
                        "México": "Mexico",
                        "Cameroun": "Cameroon",
-                       # "Côte d'Ivoire": "Ivory Coast",
+                       "Côte d'Ivoire": "Ivory Coast",
                        "Serbia": "Republic of Serbia",
+                       "Bulgary": "Bulgaria",
                        "Sénégal": "Senegal"}
         for k, v in dictcountry.items():
             self.country = self.country.replace(k, v)
-            
-    @property
+
     def get_location(self):
         # Try with different combinations of affiliation, city, country
 
@@ -90,7 +91,8 @@ class Participant(object):
                     # return those values
                     lat = location.latitude
                     lon = location.longitude
-                    countryname = location.raw["display_name"].split(",")[-1].strip()
+                    # Not all the locators work the same way!
+                    # countryname = location.raw["display_name"].split(",")[-1].strip()
                 else:
                     logloc.debug("Geocoder {0} did not provide coordinates".format(geocoders[i]))
 
@@ -105,15 +107,15 @@ class Participant(object):
         self.lat = lat
         self.countryname = countryname
 
-        return locationstring
+        return locationstring, location
 
-    def write_to(self, filename, sep='\t'):
+    def write_to(self, filename, sep="\t"):
         """
         Write the participants information into a file
         """
         with open(filename, 'a') as f:
             f.write(sep.join((self.name, self.firstname, 
-                             self.affiliation, self.countryname,
+                             self.affiliation, self.country,
                              str(self.lat),
                              str(self.lon), "\n")))
     
