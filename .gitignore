@@ -1,10 +1,16 @@
+data/*.tsv
 .idea
+*.dat
 *.swp
 *.aux
 *.bbl
+data/processed/
+data/2process/
+figures/participants/
 OldVersions/
 abstracts/
 *.pdf
 .ipynb_checkpoints/
 notebook/.ipynb_checkpoints/
 notebook/.idea/
+notebook/test/
