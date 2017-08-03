@@ -31,12 +31,26 @@
 								}
 							).setView([25, 0], 2)
 			
-		
+			map.createPane('labels');
+			map.getPane('labels').style.zIndex = 650;
+			map.getPane('labels').style.pointerEvents = 'none';
+			
+			
+			var OpenStreetMap_Mapnik = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				maxZoom: 19,
+				attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+			});
+			
+			var CartoDB = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+				maxZoom: 18, 
+				attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'
+			  });
+			
 			var CartoDB_DarkMatter = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
 				attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
 				subdomains: 'abcd',
 				maxZoom: 19
-			});	
+			});
 			
 			var Stamen_Terrain = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.{ext}', {
 				attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
@@ -46,9 +60,17 @@
 				ext: 'png'
 			});
 
-			
-			Stamen_Terrain.addTo(map);
-			
+			var positronLabels = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png', {
+				attribution: '©OpenStreetMap, ©CartoDB',
+				pane: 'labels'
+			}).addTo(map);
+
+			var baseMaps = {
+				"CartoDB": CartoDB,
+				"CartoDB Dark": CartoDB_DarkMatter,
+				"OpenStreetMap": OpenStreetMap_Mapnik,
+			};
+						
 			// control that shows state info on hover
 			var info = L.control();
 
@@ -71,10 +93,10 @@
 			
 			// Extend the colormap (>25, >50?)
 			function getColor(d) {
-				return d > 20 ? '#0c2c84' :
-					   d > 10 ? '#225ea8' :
-					   d > 5  ? '#1d91c0' :
-					   d > 2  ? '#41b6c4' :
+				return d > 100 ? '#0c2c84' :
+					   d > 50 ? '#225ea8' :
+					   d > 10  ? '#1d91c0' :
+					   d > 5  ? '#41b6c4' :
 					   d > 1  ? '#7fcdbb' :
 					   d > 0  ? '#c7e9b4' :
 								'#ffffcc';
@@ -135,7 +157,7 @@
 			legend.onAdd = function (map) {
 
 				var div = L.DomUtil.create('div', 'info legend'),
-					grades = [0, 1, 2, 5, 10, 20],
+					grades = [0, 1, 5, 10, 50, 100],
 					labels = [],
 					from, to;
 
@@ -153,6 +175,8 @@
 			};
 
 			legend.addTo(map);
+			L.control.scale().addTo(map);
+			L.control.layers(baseMaps).addTo(map);	
 			
 		</script>
 		

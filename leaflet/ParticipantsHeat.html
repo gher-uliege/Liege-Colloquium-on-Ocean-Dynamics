@@ -16,14 +16,14 @@
 	
 	<body class="">
 
-		<div id="map" style="height:700px"></div>	
+		<div id="map" style="height:800px"></div>	
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.4.3/Control.FullScreen.min.js"></script>
 		<script tupe="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.0.6/leaflet.markercluster.js"></script>
 		<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
 		<script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
 		<script src="https://rawgit.com/Asymmetrik/leaflet-d3/master/dist/leaflet-d3.js" charset="utf-8"></script>
-		<script src="../data/participants.coord"></script>
+		<script src="../data/coords/Participants.coords"></script>
 
 	
 		<script>
@@ -32,14 +32,19 @@
 								{
 								fullscreenControl: true,
 								}
-							).setView([50.855, 4.347], 3);
+							).setView([25, 0], 2)
+							
+			map.createPane('labels');
+			map.getPane('labels').style.zIndex = 650;
+			map.getPane('labels').style.pointerEvents = 'none';
+			
 			
 			var OpenStreetMap_Mapnik = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 				maxZoom: 19,
 				attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 			});
 			
-			var CartoDB = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+			var CartoDBmap = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
 				maxZoom: 18, 
 				attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'
 			  });
@@ -56,13 +61,20 @@
 				minZoom: 0,
 				maxZoom: 18,
 				ext: 'png'
-			});			
+			});
+
+			var CartoDBLabels = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png', {
+				attribution: '©OpenStreetMap, ©CartoDB',
+				pane: 'labels'
+			});
+			
+			var CartoDB = L.layerGroup([CartoDBmap, CartoDBLabels]);
+			CartoDB.addTo(map);
 
 			var baseMaps = {
-				"CartoDB No Labels": CartoDB,
+				"CartoDB": CartoDB,
 				"CartoDB Dark": CartoDB_DarkMatter,
 				"OpenStreetMap": OpenStreetMap_Mapnik,
-				"Stamen_Terrain": Stamen_Terrain
 			};
 			
 			var heatStyle = {
