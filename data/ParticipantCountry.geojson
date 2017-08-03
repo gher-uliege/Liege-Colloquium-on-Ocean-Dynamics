@@ -4136,7 +4136,7 @@ var participants = {
             "id": "AUS",
             "properties": {
                 "name": "Australia",
-                "Participants": 4
+                "Participants": 11
             },
             "geometry": {
                 "type": "MultiPolygon",
@@ -5546,7 +5546,7 @@ var participants = {
             "id": "BEL",
             "properties": {
                 "name": "Belgium",
-                "Participants": 208
+                "Participants": 316
             },
             "geometry": {
                 "type": "Polygon",
@@ -6063,7 +6063,7 @@ var participants = {
             "id": "BGR",
             "properties": {
                 "name": "Bulgaria",
-                "Participants": 1
+                "Participants": 3
             },
             "geometry": {
                 "type": "Polygon",
@@ -8671,7 +8671,7 @@ var participants = {
             "id": "CAN",
             "properties": {
                 "name": "Canada",
-                "Participants": 31
+                "Participants": 57
             },
             "geometry": {
                 "type": "MultiPolygon",
@@ -11972,7 +11972,7 @@ var participants = {
             "id": "CHE",
             "properties": {
                 "name": "Switzerland",
-                "Participants": 3
+                "Participants": 4
             },
             "geometry": {
                 "type": "Polygon",
@@ -12559,7 +12559,7 @@ var participants = {
             "id": "CHN",
             "properties": {
                 "name": "China",
-                "Participants": 3
+                "Participants": 8
             },
             "geometry": {
                 "type": "MultiPolygon",
@@ -13738,7 +13738,8 @@ var participants = {
             "type": "Feature",
             "id": "CMR",
             "properties": {
-                "name": "Cameroon"
+                "name": "Cameroon",
+                "Participants": 1
             },
             "geometry": {
                 "type": "Polygon",
@@ -15769,7 +15770,7 @@ var participants = {
             "id": "DEU",
             "properties": {
                 "name": "Germany",
-                "Participants": 48
+                "Participants": 68
             },
             "geometry": {
                 "type": "Polygon",
@@ -16325,7 +16326,7 @@ var participants = {
             "id": "DZA",
             "properties": {
                 "name": "Algeria",
-                "Participants": 2
+                "Participants": 3
             },
             "geometry": {
                 "type": "Polygon",
@@ -17042,7 +17043,7 @@ var participants = {
             "id": "ESP",
             "properties": {
                 "name": "Spain",
-                "Participants": 7
+                "Participants": 12
             },
             "geometry": {
                 "type": "Polygon",
@@ -17594,7 +17595,7 @@ var participants = {
             "id": "FIN",
             "properties": {
                 "name": "Finland",
-                "Participants": 2
+                "Participants": 3
             },
             "geometry": {
                 "type": "Polygon",
@@ -17927,7 +17928,7 @@ var participants = {
             "id": "FRA",
             "properties": {
                 "name": "France",
-                "Participants": 105
+                "Participants": 150
             },
             "geometry": {
                 "type": "MultiPolygon",
@@ -18306,7 +18307,7 @@ var participants = {
             "id": "GBR",
             "properties": {
                 "name": "United Kingdom",
-                "Participants": 74
+                "Participants": 106
             },
             "geometry": {
                 "type": "MultiPolygon",
@@ -22200,7 +22201,8 @@ var participants = {
             "type": "Feature",
             "id": "IND",
             "properties": {
-                "name": "India"
+                "name": "India",
+                "Participants": 2
             },
             "geometry": {
                 "type": "Polygon",
@@ -23474,7 +23476,7 @@ var participants = {
             "id": "ITA",
             "properties": {
                 "name": "Italy",
-                "Participants": 17
+                "Participants": 34
             },
             "geometry": {
                 "type": "MultiPolygon",
@@ -23995,7 +23997,7 @@ var participants = {
             "id": "JPN",
             "properties": {
                 "name": "Japan",
-                "Participants": 2
+                "Participants": 9
             },
             "geometry": {
                 "type": "MultiPolygon",
@@ -24741,7 +24743,8 @@ var participants = {
             "type": "Feature",
             "id": "KEN",
             "properties": {
-                "name": "Kenya"
+                "name": "Kenya",
+                "Participants": 1
             },
             "geometry": {
                 "type": "Polygon",
@@ -25327,7 +25330,8 @@ var participants = {
             "type": "Feature",
             "id": "KWT",
             "properties": {
-                "name": "Kuwait"
+                "name": "Kuwait",
+                "Participants": 1
             },
             "geometry": {
                 "type": "Polygon",
@@ -26307,7 +26311,8 @@ var participants = {
             "type": "Feature",
             "id": "MAR",
             "properties": {
-                "name": "Morocco"
+                "name": "Morocco",
+                "Participants": 1
             },
             "geometry": {
                 "type": "Polygon",
@@ -26910,7 +26915,7 @@ var participants = {
             "id": "MEX",
             "properties": {
                 "name": "Mexico",
-                "Participants": 7
+                "Participants": 16
             },
             "geometry": {
                 "type": "Polygon",
@@ -29926,7 +29931,7 @@ var participants = {
             "id": "NER",
             "properties": {
                 "name": "Niger",
-                "Participants": 4
+                "Participants": 6
             },
             "geometry": {
                 "type": "Polygon",
@@ -30641,7 +30646,7 @@ var participants = {
             "id": "NLD",
             "properties": {
                 "name": "Netherlands",
-                "Participants": 35
+                "Participants": 50
             },
             "geometry": {
                 "type": "Polygon",
@@ -30712,7 +30717,7 @@ var participants = {
             "id": "NOR",
             "properties": {
                 "name": "Norway",
-                "Participants": 8
+                "Participants": 24
             },
             "geometry": {
                 "type": "MultiPolygon",
@@ -33341,7 +33346,8 @@ var participants = {
             "type": "Feature",
             "id": "POL",
             "properties": {
-                "name": "Poland"
+                "name": "Poland",
+                "Participants": 1
             },
             "geometry": {
                 "type": "Polygon",
@@ -33772,7 +33778,7 @@ var participants = {
             "id": "PRT",
             "properties": {
                 "name": "Portugal",
-                "Participants": 1
+                "Participants": 3
             },
             "geometry": {
                 "type": "Polygon",
@@ -34305,7 +34311,7 @@ var participants = {
             "id": "RUS",
             "properties": {
                 "name": "Russia",
-                "Participants": 7
+                "Participants": 14
             },
             "geometry": {
                 "type": "MultiPolygon",
@@ -38703,7 +38709,7 @@ var participants = {
             "id": "SRB",
             "properties": {
                 "name": "Republic of Serbia",
-                "Participants": 1
+                "Participants": 2
             },
             "geometry": {
                 "type": "Polygon",
@@ -39252,7 +39258,7 @@ var participants = {
             "id": "SWE",
             "properties": {
                 "name": "Sweden",
-                "Participants": 6
+                "Participants": 14
             },
             "geometry": {
                 "type": "MultiPolygon",
@@ -40999,7 +41005,8 @@ var participants = {
             "type": "Feature",
             "id": "TUR",
             "properties": {
-                "name": "Turkey"
+                "name": "Turkey",
+                "Participants": 2
             },
             "geometry": {
                 "type": "MultiPolygon",
@@ -42174,7 +42181,7 @@ var participants = {
             "id": "USA",
             "properties": {
                 "name": "United States of America",
-                "Participants": 141
+                "Participants": 201
             },
             "geometry": {
                 "type": "MultiPolygon",
@@ -45108,7 +45115,8 @@ var participants = {
             "type": "Feature",
             "id": "ZAF",
             "properties": {
-                "name": "South Africa"
+                "name": "South Africa",
+                "Participants": 6
             },
             "geometry": {
                 "type": "Polygon",
