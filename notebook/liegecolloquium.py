@@ -15,17 +15,15 @@ import shapefile
 import pycountry
 from geolite2 import geolite2
 
-
-
 arcgis = ArcGIS(timeout=100)
 nominatim = Nominatim(timeout=100)
 googlev3 = GoogleV3(timeout=100)
 openmapquest = OpenMapQuest(timeout=100)
 
 logloc = logging.getLogger('locator')
-logloc.setLevel(logging.INFO)
+logloc.setLevel(logging.WARNING)
 ch = logging.StreamHandler()
-ch.setLevel(logging.INFO)
+ch.setLevel(logging.WARNING)
 logloc.addHandler(ch)
 
 # choose and order your preference for geocoders here
@@ -56,7 +54,7 @@ class Participant(object):
                        "U.K.": "United Kingdom",
                        "Republic of Burundi": "Burundi",
                        "Belgique": "Belgium",
-                       #"Russia": "Russian Federation",
+                       # "Russia": "Russian Federation",
                        "Maroc": "Morocco",
                        "México": "Mexico",
                        "Cameroun": "Cameroon",
@@ -67,7 +65,7 @@ class Participant(object):
         for k, v in dictcountry.items():
             self.country = self.country.replace(k, v)
 
-    def get_location(self):
+    def get_location(self, fillval=-999):
         # Try with different combinations of affiliation, city, country
 
         locationstring = ", ".join((self.affiliation, self.city, self.country))
@@ -77,6 +75,7 @@ class Participant(object):
         lon = None
         lat = None
         countryname = None
+        location = None
 
         while not lon and not lat:
 
@@ -98,8 +97,9 @@ class Participant(object):
 
             except:
                 # catch whatever errors, likely timeout, and return null values
-                logloc.debug("Problem with geocoder {0}".format(geocoders[i]))
-
+                logloc.warning("Problem with geocoder {0}".format(geocoders[i]))
+                lon = fillval
+                lat = fillval
             # Try another geocoder
             i += 1
 
@@ -119,7 +119,7 @@ class Participant(object):
                              str(self.lat),
                              str(self.lon), "\n")))
     
-    def write_coords_to(self, filename, sep="\t"):
+    def write_coords_to(self, filename):
         """
         Write the coordinates in a file
         """
@@ -127,19 +127,24 @@ class Participant(object):
             f.write("[{0}, {1}],\n".format(self.lat, self.lon))
 
 
-def make_country_map(countrylist, shapefile, m, figname, year=None,
+def make_country_map(countrylist, shapefilename, m, figname, year=None,
                      bounds=(1, 2, 4, 6, 8, 10, 15, 20),
                      cmap=cm.YlGnBu,
                      logofile="../logos/logo_colloquium.png"):
     """
     :param countrylist: list of country iso-codes
-    :param shapefile: path of the shape file
+    :type countrylist: list
+    :param shapefilename: path of the shape file
+    :type shapefilename: str
     :param m: projection created with Basemap
     :param figname: path of the figure to be created
+    :type figname: str
     :param year: considered year
+    :type year: int
     :param bounds: bounds of the colorbar
     :param cmap: colormap
     :param logofile: file storing the CLQ logo
+    :type logofile: str
     :return:
     """
 
@@ -147,7 +152,7 @@ def make_country_map(countrylist, shapefile, m, figname, year=None,
     countrycount = Counter(countrylist)
     nmax = max(countrycount.values())
 
-    shapes, records = read_shape(shapefile)
+    shapes, records = read_shape(shapefilename)
 
     fig = plt.figure(figsize=(11.7, 8.3))
     ax = plt.subplot(111)
