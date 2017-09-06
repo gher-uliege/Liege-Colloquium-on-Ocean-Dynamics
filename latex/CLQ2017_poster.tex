@@ -1,4 +1,4 @@
-\documentclass[final,table,14pt]{beamer}
+\documentclass[final,table,14pt,svgnames]{beamer}
 \usepackage[orientation=portrait,size=a4,scale=4]{beamerposter}
 \setbeamertemplate{navigation symbols}{}
 \usepackage{graphicx}
@@ -7,7 +7,9 @@
 \usepackage{pgfpages}
 \usepackage{hyperref}
 \usepackage{fontawesome}
-\urlstyle{rm}
+\usepackage{xcolor}
+%\usefonttheme{serif}
+\urlstyle{sf}
 
 
 \tikzstyle{na} = [baseline=-.5ex]
@@ -15,13 +17,10 @@
 \tikzstyle{every picture}+=[remember picture]
 \usetikzlibrary{spy}
 
-\newfontfamily\oldschool[Path = /home/ctroupin/.fonts/]{OldNewspaperTypes}
-
-
+\newfontfamily\oldschool[Path = /home/ctroupin/.fonts/]{Aachen Bold}
 
 \usepackage{fontspec}
 \defaultfontfeatures{Ligatures=TeX}
-
 
 \definecolor{bluegher}{RGB}{4,99,128}  		% blue 
 \definecolor{greygher}{RGB}{50, 50, 50}  	% grey 
@@ -30,17 +29,20 @@
 
 \hypersetup{colorlinks,linkcolor=,urlcolor=bluegher}
 
-\setbeamerfont{title}{size=\large}
-\setbeamerfont{subtitle}{size=\huge,series=\oldschool}
+\setbeamerfont{title}{size=\Large,family=\rmfamily}
+\setbeamerfont{subtitle}{size=\large,series=\oldschool}
 \setbeamerfont{date}{size=\scriptsize}
 \setbeamercolor{title}{fg=bluegher}
 \setbeamercolor{subtitle}{bg=bluegher,fg=white}
 
-\setbeamersize{text margin left=1cm, text margin right=1cm} %new code
+\setbeamersize{text margin left=.1cm, text margin right=1cm} %new code
 
 \defbeamertemplate*{title page}{customized}[1][]
 {
   \usebeamerfont{title}\inserttitle\par
+
+  \vspace{.5cm}
+  
   \usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\usebeamercolor[bg]{subtitle}\insertsubtitle
 }
    
@@ -81,7 +83,7 @@
 
 \parindent 0cm
 
-%\usebackgroundtemplate{\tikz\node[opacity=0.2]{\parbox[c][\paperheight][c]{\paperwidth}{\hspace{-.25cm}\includegraphics[width=1.05\paperwidth]{./background2.jpg}}};}
+\usebackgroundtemplate{\tikz\node[opacity=0.33]{\parbox[c][\paperheight][c]{\paperwidth}{\hspace{-.25cm}\includegraphics[width=1.05\paperwidth]{clq_room.JPG}}};}
 
 % These lines to keep good colors when viewed with Acrobat Reader
 \makeatletter%
@@ -90,26 +92,25 @@
 
 \author{}
 %\url{www.socib.es}}
-\title[]{Long Time Series}
-\subtitle{50th Anniversary of the Colloquium}
+\title[]{Long-term studies in oceanography}
+\subtitle{A celebration of \\
+50 years of science\\
+ at the Liege Colloquium}
 \date{28~May--1~June, 2018}
 
 \begin{document}
 
 \begin{frame}[fragile]
-
-
 \centering
-\maketitle
 
-% Background rectangls
+% Background rectangles
 \begin{tikzpicture}[remember picture,overlay]%
 
 %\draw[step=1cm,lightgray,very thin] (-11,-24) grid (20, 20);
  
 \coordinate (tp1) at ([yshift=0cm]current page.north west);
-\coordinate (tp2) at ([yshift=-3cm]current page.north west);
-\coordinate (tp3) at ([yshift=-3cm]current page.north east);
+\coordinate (tp2) at ([yshift=-8.5cm]current page.north west);
+\coordinate (tp3) at ([yshift=-8.5cm]current page.north east);
 \coordinate (tp4) at ([yshift=0cm]current page.north east);
 
 \coordinate (tp5) at (current page.south west);
@@ -117,22 +118,29 @@
 \coordinate (tp7) at ([yshift=\figheight+1.2cm]current page.south east);
 \coordinate (tp8) at (current page.south east);
 
-\filldraw[draw=none,fill=green,opacity=0.35] (tp1)--(tp2)--(tp3)--(tp4)--cycle;
+%\filldraw[draw=none,fill=DarkTurquoise,opacity=0.35] (tp1)--(tp2)--(tp3)--(tp4)--cycle;
+
 \filldraw[draw=greybackground,fill=greybackground,opacity=0.7] (tp5)--(tp6)--(tp7)--(tp8)--cycle;
-\shade[top color=bluegher,bottom color=greybackground,opacity=0.7] (tp1)--(tp2)--(tp3)--(tp4)--cycle;
-\node[anchor=north east,yshift=-10pt,xshift=-.5cm] at (current page.north east) {\includegraphics[height=.07\textheight]{logo_colloquium}};
+
+\shade[top color=bluegher,bottom color=white,opacity=0.7] (tp1)--(tp2)--(tp3)--(tp4)--cycle;
+\node[anchor=north east,yshift=-125pt,xshift=-.5cm] at (current page.north east) {\includegraphics[height=.07\textheight]{logo_colloquium}};
 
 \end{tikzpicture}
 
-\vspace*{2cm}
+\maketitle
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth]{colloquium_background2}
+\end{figure}
 %
 %
-%{\footnotesize
-%\textcolor{greygher}{\faCalendarCheckO~~~\insertdate}\\
-%\textcolor{bluegher}{{\ComputerMouse}~~~\url{http://labos.ulg.ac.be/gher/home/colloquium/}}\\
-%\textcolor{greygher}{\faHome~~~University of Liège - Place du 20-Août, 7 - 4000 Liège - Belgium}\\ 
-%\textcolor{bluegher}{\faEnvelopeO~~~\href{mailto:oceanphys@ulg.ac.be}{oceanphys@ulg.ac.be}}\seplogo\textcolor{greygher}{\faTwitter~~~@GHER\_ULg}\\
-%}
+{\footnotesize
+\textcolor{greygher}{\faCalendarCheckO~~~\insertdate}\\
+\textcolor{bluegher}{{\ComputerMouse}~~~\url{http://labos.ulg.ac.be/gher/home/colloquium/}}\\
+\textcolor{greygher}{\faHome~~~University of Liège - Place du 20-Août, 7 - 4000 Liège - Belgium}\\ 
+\textcolor{bluegher}{\faEnvelopeO~~~\href{mailto:oceanphys@ulg.ac.be}{oceanphys@ulg.ac.be}}\seplogo\textcolor{greygher}{\faTwitter~~~@GHER\_ULg}\\
+}
 
 %{\oldschool \huge 50th}
 
