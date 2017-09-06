@@ -4,6 +4,7 @@ data/*.tsv
 *.swp
 *.aux
 *.bbl
+*.tsv
 data/processed/
 data/2process/
 figures/participants/
