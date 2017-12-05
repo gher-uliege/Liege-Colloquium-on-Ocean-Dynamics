@@ -1,5 +1,6 @@
 data/*.tsv
-.idea
+.ideaa
+*.bak
 *.dat
 *.swp
 *.aux
