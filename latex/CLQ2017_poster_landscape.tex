@@ -1,0 +1,226 @@
+\documentclass[final,table,14pt,svgnames]{beamer}
+\usepackage[orientation=lanscape,size=a4,scale=4]{beamerposter}
+\setbeamertemplate{navigation symbols}{}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{marvosym}
+\usepackage{pgfpages}
+\usepackage{hyperref}
+\usepackage{fontawesome}
+\usepackage{xcolor}
+%\usefonttheme{serif}
+\urlstyle{sf}
+
+
+\tikzstyle{na} = [baseline=-.5ex]
+\usetikzlibrary{arrows,shapes,backgrounds}
+\tikzstyle{every picture}+=[remember picture]
+\usetikzlibrary{spy}
+
+\newfontfamily\oldschool[Path = /home/ctroupin/.fonts/]{Aachen Bold}
+
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+
+\definecolor{bluegher}{RGB}{4,99,128}  		% blue 
+\definecolor{greygher}{RGB}{50, 50, 50}  	% grey 
+\definecolor{greytext}{RGB}{100, 100, 100}  	% grey 
+\definecolor{redgher}{RGB}{189, 33, 5}  	% red 
+\definecolor{greybackground}{RGB}{235, 235, 235}
+
+\hypersetup{colorlinks,linkcolor=,urlcolor=bluegher}
+
+\setbeamerfont{title}{size=\large,family=\rmfamily}
+\setbeamerfont{subtitle}{size=\large,series=\oldschool}
+\setbeamerfont{date}{size=\scriptsize}
+\setbeamerfont{projected text}{size=\normalsize,,series=\oldschool}
+
+\setbeamercolor{title}{fg=bluegher}
+\setbeamercolor{projected text}{fg=bluegher}
+\setbeamercolor{subtitle}{bg=bluegher,fg=white}
+\setbeamercolor{projected text}{fg=bluegher,bg=white}
+
+
+\setbeamersize{text margin left=.1cm, text margin right=1cm} %new code
+
+
+
+
+\defbeamertemplate*{title page}{customized}[1][]
+{ \usebeamerfont{title}\inserttitle%\par
+  \vspace{.05cm}
+
+\parbox{.1\textwidth}{
+\hspace{-.85cm}
+\begin{tikzpicture}[scale=.65]
+%\draw[help lines] (0,0) grid (10,10);
+\draw[line width=1pt, bluegher] (0,0) to [out=0, in=150] (5,1) to (5,3) to [out=150, in=0] (0, 2) to (0,0);
+\node (a) at (0.5, 1.15) {\usebeamerfont{projected text}\usebeamercolor[fg]{projected text} 1};
+\node (a) at (1.5, 1.45) {\usebeamerfont{projected text}\usebeamercolor[fg]{projected text} 9};
+\node (a) at (2.75, 2) {\usebeamerfont{projected text}\usebeamercolor[fg]{projected text} 6};
+\node (a) at (4, 2.2) {\usebeamerfont{projected text}\usebeamercolor[fg]{projected text} 9};
+\end{tikzpicture}
+}\parbox{.75\textwidth}{\centering
+  	
+  \usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\usebeamercolor[bg]{subtitle}\insertsubtitle
+  
+}\parbox{.1\textwidth}{
+\hspace*{-.4cm}
+\begin{tikzpicture}[scale=.65]
+\draw[line width=1pt,bluegher] (0,1) to [out=30, in=180] (5,0) to (5,2) to [out=180, in=30] (0, 3) to (0,1);
+\node (a) at (0.5, 2.2) {\usebeamerfont{projected text} \usebeamercolor[fg]{projected text}2};
+\node (a) at (1.75, 2.) {\usebeamerfont{projected text} \usebeamercolor[fg]{projected text}0};
+\node (a) at (2.8, 1.5) {\usebeamerfont{projected text} \usebeamercolor[fg]{projected text}1};
+\node (a) at (4., 1.15) {\usebeamerfont{projected text} \usebeamercolor[fg]{projected text}8};
+\end{tikzpicture}
+}
+}
+   
+% ------------------------------------------------
+% LENGTH DEFINITIONS
+%-------------------------------------------------
+%\setlength{\textwidth}{24cm}
+%\setlength{\textheight}{28cm}
+\setbeamersize{text margin left=10pt,text margin right=10pt}
+
+\newsavebox{\ximagebox}
+\newlength{\ximageheight}
+\newsavebox{\xglyphbox}
+\newlength{\xglyphheight}
+\newcommand{\xbox}[1]%
+   {\savebox{\ximagebox}{#1}%
+    \settoheight{\ximageheight}{\usebox{\ximagebox}}%
+    \savebox{\xglyphbox}{\char32}%
+    \settoheight{\xglyphheight}{\usebox{\xglyphbox}}%
+    \raisebox{\ximageheight}[0pt][0pt]{\raisebox{-\xglyphheight}[0pt][0pt]{%
+      \makebox[0pt][l]{\usebox{\xglyphbox}}}}%
+    \usebox{\ximagebox}%
+    \raisebox{0pt}[0pt][0pt]{\makebox[0pt][r]{\usebox{\xglyphbox}}}}
+    
+
+
+\newcommand{\seplogo}{\hspace{.45cm}}
+\newcommand{\figheight}{.0625\textheight}
+\newcommand{\figheightB}{.07\textheight}
+\newcommand{\putlogo}[1]{\includegraphics[height=\figheight]{#1}}
+\newcommand{\putlogolink}[2]{\href{#1}{\xbox{\includegraphics[height=\figheight]{#2}}}}
+\newcommand{\putlogoB}[1]{\includegraphics[height=\figheightB]{#1}}
+
+\DeclareGraphicsExtensions{.eps,.JPG,.jpg,.pdf,.png,.PNG,.jpeg}
+\graphicspath{
+{./logos/},
+}
+
+\parindent 0cm
+
+\usebackgroundtemplate{\tikz\node[opacity=0.33]{\parbox[c][\paperheight][c]{\paperwidth}{\hspace{-.25cm}\includegraphics[width=1.05\paperwidth]{clq_room.JPG}}};}
+
+% These lines to keep good colors when viewed with Acrobat Reader
+\makeatletter%
+\special{pdf: put @thispage <</Group << /S /Transparency /I true /CS /DeviceRGB>> >>}%
+\makeatother%
+
+\author{}
+%\url{www.socib.es}}
+\title[]{Long-term studies in oceanography}
+\subtitle{A celebration of 50 years of science\\
+ at the Liege Colloquium}
+\date{28~May--1~June, 2018}
+
+\begin{document}
+
+\begin{frame}[fragile, t]
+\centering
+
+% Background rectangles
+\begin{tikzpicture}[remember picture,overlay]%
+
+%\draw[step=1cm,lightgray,very thin] (-11,-24) grid (20, 20);
+ 
+\coordinate (tp1) at ([yshift=-.5cm, xshift=.5cm]current page.north west);
+\coordinate (tp2) at ([yshift=-6cm, xshift=.5cm]current page.north west);
+\coordinate (tp3) at ([yshift=-6cm, xshift=-.5cm]current page.north east);
+\coordinate (tp4) at ([yshift=-.5cm, xshift=-.5cm]current page.north east);
+
+\coordinate (tp5) at (current page.south west);
+\coordinate (tp6) at ([yshift=\figheight+1.2cm	]current page.south west);
+\coordinate (tp7) at ([yshift=\figheight+1.2cm]current page.south east);
+\coordinate (tp8) at (current page.south east);
+
+%\filldraw[draw=none,fill=DarkTurquoise,opacity=0.35] (tp1)--(tp2)--(tp3)--(tp4)--cycle;
+
+\filldraw[draw=greybackground,fill=greybackground,opacity=0.7] (tp5)--(tp6)--(tp7)--(tp8)--cycle;
+
+\shade[top color=bluegher,bottom color=white,opacity=0.7] (tp1)--(tp2)--(tp3)--(tp4)--cycle;
+
+\node[anchor=north east,yshift=-35pt,xshift=-.5cm] at (current page.north east) {\includegraphics[height=.05\textheight]{logo_colloquium}};
+
+\end{tikzpicture}
+
+\maketitle
+
+\vspace{.5cm}
+
+\begin{figure}
+\centering
+\includegraphics[width=.5\textwidth]{colloquium_background2.png}%\includegraphics[width=.5\textwidth]{clq_background2}
+%\includegraphics[width=\textwidth]{timeseries}
+\end{figure}
+%
+%
+{\footnotesize
+\textcolor{greygher}{\faCalendarCheckO~~~\insertdate}\\
+\textcolor{bluegher}{{\ComputerMouse}~~~\url{http://labos.ulg.ac.be/gher/home/colloquium/}}\\
+\textcolor{greygher}{\faHome~~~University of Liège - Place du 20-Août, 7 - 4000 Liège - Belgium}\\ 
+\textcolor{bluegher}{\faEnvelopeO~~~\href{mailto:oceanphys@ulg.ac.be}{oceanphys@ulg.ac.be}}\seplogo\textcolor{greygher}{\faTwitter~~~@GHER\_ULg}\\
+}
+
+\vspace{2cm}
+
+%{\oldschool \huge 50th}
+
+
+%------------------------------------------------------------
+% Add some text for the messages: deadline, travel grants etc
+%------------------------------------------------------------
+%\vspace{.05cm}
+%{\scriptsize 
+%\fcolorbox{black}{redgher}{\textcolor{white}{Extended deadline for abstracts: 8th February 2016}}
+%}
+
+%{\scriptsize 
+%\href{http://modb.oce.ulg.ac.be/colloquium/2016/#col_travel_grants}{Travel support}: please visit the colloquium web page
+%}
+\vspace{.35cm}
+\vfill
+
+
+%-------------------------------------
+% Place the logo for the sponsors here
+%-------------------------------------
+
+\vfill
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=south] at (current page.south) {
+  \begin{columns}[totalwidth=1.\textwidth,c]
+\column{.41\textwidth}
+\scriptsize
+\putlogolink{http://www.ulg.ac.be}{logo_uliege} \seplogo \putlogolink{http://modb.oce.ulg.ac.be/}{logo_gher}
+\column{.02\textwidth}
+~
+\column{.6\textwidth}
+\scriptsize
+\putlogolink{http://www.wallonie.be/}{coq_wallon} \seplogo \putlogolink{http://www.fnrs.be/}{logo_fnrs}
+\end{columns}
+  
+  };
+\end{tikzpicture}
+
+
+
+\end{frame}
+
+
+
+\end{document}
