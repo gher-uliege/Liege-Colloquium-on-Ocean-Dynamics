@@ -24,26 +24,57 @@
 
 \definecolor{bluegher}{RGB}{4,99,128}  		% blue 
 \definecolor{greygher}{RGB}{50, 50, 50}  	% grey 
+\definecolor{greytext}{RGB}{100, 100, 100}  	% grey 
 \definecolor{redgher}{RGB}{189, 33, 5}  	% red 
 \definecolor{greybackground}{RGB}{235, 235, 235}
 
 \hypersetup{colorlinks,linkcolor=,urlcolor=bluegher}
 
-\setbeamerfont{title}{size=\Large,family=\rmfamily}
+\setbeamerfont{title}{size=\large,family=\rmfamily}
 \setbeamerfont{subtitle}{size=\large,series=\oldschool}
 \setbeamerfont{date}{size=\scriptsize}
+\setbeamerfont{projected text}{size=\normalsize,,series=\oldschool}
+
 \setbeamercolor{title}{fg=bluegher}
+\setbeamercolor{projected text}{fg=bluegher}
 \setbeamercolor{subtitle}{bg=bluegher,fg=white}
+\setbeamercolor{projected text}{fg=bluegher,bg=white}
+
 
 \setbeamersize{text margin left=.1cm, text margin right=1cm} %new code
 
+
+
+
 \defbeamertemplate*{title page}{customized}[1][]
-{
-  \usebeamerfont{title}\inserttitle\par
+{ \usebeamerfont{title}\inserttitle%\par
 
   \vspace{.5cm}
-  
+
+\parbox{.15\textwidth}{
+%\hspace{-.9cm}
+%\begin{tikzpicture}[scale=.65]
+%\draw[help lines] (0,0) grid (10,10);
+%\draw[line width=1pt, bluegher] (0,0) to [out=0, in=150] (5,1) to (5,3) to [out=150, in=0] (0, 2) to (0,0);
+%\node (a) at (0.5, 1.15) {\usebeamerfont{projected text}\usebeamercolor[fg]{projected text} 1};
+%\node (a) at (1.5, 1.45) {\usebeamerfont{projected text}\usebeamercolor[fg]{projected text} 9};
+%\node (a) at (2.75, 2) {\usebeamerfont{projected text}\usebeamercolor[fg]{projected text} 6};
+%\node (a) at (4, 2.2) {\usebeamerfont{projected text}\usebeamercolor[fg]{projected text} 9};
+%\end{tikzpicture}
+}\parbox{.65\textwidth}{\centering
+  	
   \usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\usebeamercolor[bg]{subtitle}\insertsubtitle
+  
+}\parbox{.15\textwidth}{
+
+%\begin{tikzpicture}[scale=.65]
+%\draw[line width=1pt,bluegher] (0,1) to [out=30, in=180] (5,0) to (5,2) to [out=180, in=30] (0, 3) to (0,1);
+%\node (a) at (0.5, 2.2) {\usebeamerfont{projected text} \usebeamercolor[fg]{projected text}2};
+%\node (a) at (1.75, 2.) {\usebeamerfont{projected text} \usebeamercolor[fg]{projected text}0};
+%\node (a) at (2.8, 1.5) {\usebeamerfont{projected text} \usebeamercolor[fg]{projected text}1};
+%\node (a) at (4., 1.15) {\usebeamerfont{projected text} \usebeamercolor[fg]{projected text}8};
+%\end{tikzpicture}
+}
 }
    
 % ------------------------------------------------
@@ -100,7 +131,7 @@
 
 \begin{document}
 
-\begin{frame}[fragile]
+\begin{frame}[fragile, t]
 \centering
 
 % Background rectangles
@@ -108,10 +139,10 @@
 
 %\draw[step=1cm,lightgray,very thin] (-11,-24) grid (20, 20);
  
-\coordinate (tp1) at ([yshift=0cm]current page.north west);
-\coordinate (tp2) at ([yshift=-8.5cm]current page.north west);
-\coordinate (tp3) at ([yshift=-8.5cm]current page.north east);
-\coordinate (tp4) at ([yshift=0cm]current page.north east);
+\coordinate (tp1) at ([yshift=-.25cm, xshift=.25cm]current page.north west);
+\coordinate (tp2) at ([yshift=-8.5cm, xshift=.25cm]current page.north west);
+\coordinate (tp3) at ([yshift=-8.5cm, xshift=-.25cm]current page.north east);
+\coordinate (tp4) at ([yshift=-.25cm, xshift=-.25cm]current page.north east);
 
 \coordinate (tp5) at (current page.south west);
 \coordinate (tp6) at ([yshift=\figheight+1.2cm	]current page.south west);
@@ -123,15 +154,19 @@
 \filldraw[draw=greybackground,fill=greybackground,opacity=0.7] (tp5)--(tp6)--(tp7)--(tp8)--cycle;
 
 \shade[top color=bluegher,bottom color=white,opacity=0.7] (tp1)--(tp2)--(tp3)--(tp4)--cycle;
-\node[anchor=north east,yshift=-125pt,xshift=-.5cm] at (current page.north east) {\includegraphics[height=.07\textheight]{logo_colloquium}};
+
+\node[anchor=north east,yshift=-35pt,xshift=-.5cm] at (current page.north east) {\includegraphics[height=.05\textheight]{logo_colloquium}};
 
 \end{tikzpicture}
 
 \maketitle
 
+\vspace{2cm}
+
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth]{colloquium_background2}
+\includegraphics[width=\textwidth]{colloquium_background2.png}%\includegraphics[width=.5\textwidth]{clq_background2}
+%\includegraphics[width=\textwidth]{timeseries}
 \end{figure}
 %
 %
@@ -141,6 +176,8 @@
 \textcolor{greygher}{\faHome~~~University of Liège - Place du 20-Août, 7 - 4000 Liège - Belgium}\\ 
 \textcolor{bluegher}{\faEnvelopeO~~~\href{mailto:oceanphys@ulg.ac.be}{oceanphys@ulg.ac.be}}\seplogo\textcolor{greygher}{\faTwitter~~~@GHER\_ULg}\\
 }
+
+\vspace{2cm}
 
 %{\oldschool \huge 50th}
 
