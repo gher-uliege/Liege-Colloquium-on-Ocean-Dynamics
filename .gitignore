@@ -1,11 +1,14 @@
 data/*.tsv
-.ideaa
+.idea
 *.bak
 *.dat
 *.swp
 *.aux
 *.bbl
 *.tsv
+LCOL_50_ToR.doc
+data/dineof/
+data/numParticipant_git.csv
 data/processed/
 data/2process/
 figures/participants/
