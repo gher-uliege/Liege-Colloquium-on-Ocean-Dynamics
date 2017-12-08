@@ -1,0 +1,109 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="UTF-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>
+			Liege Colloquium map
+		</title>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.4.3/Control.FullScreen.min.css">
+	</head>
+
+
+	<body class="">
+
+		<div id="map" style="height:700px; width:700px"></div>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.4.3/Control.FullScreen.min.js"></script>
+		<script type="text/javascript" src="./hotel.dat"></script>
+		<script>
+
+			var map = L.map('map',
+								{
+								fullscreenControl: true,
+								}
+							).setView([50.6336, 5.572], 14)
+
+			map.createPane('labels');
+			map.getPane('labels').style.zIndex = 650;
+			map.getPane('labels').style.pointerEvents = 'none';
+
+			var OpenStreetMap_Mapnik = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				maxZoom: 19,
+				attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+			});
+
+			var CartoDBmap = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+				maxZoom: 18,
+				attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'
+			  });
+
+			var CartoDBLabels = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png', {
+				attribution: '©OpenStreetMap, ©CartoDB',
+				pane: 'labels'
+			});
+
+			var CartoDB = L.layerGroup([CartoDBmap, CartoDBLabels]);
+			CartoDB.addTo(map);
+
+			var baseMaps = {
+				"CartoDB": CartoDB,
+				"OpenStreetMap": OpenStreetMap_Mapnik,
+			};
+
+			function toTitleCase(str) {
+			    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+			};
+
+			var hotelmarkers = []
+			for (let i = 0; i < hoteldata.length; i++) {
+				var marker = L.marker(new L.LatLng(hoteldata[i][1], hoteldata[i][2]));
+				marker.bindPopup("<p>" + toTitleCase(hoteldata[i][0]) + "<p>" +  "<p>" + hoteldata[i][3] + "</p>");
+        marker.on("click", function (e) {
+            this.openPopup();
+        });
+				hotelmarkers.push(marker)
+			};
+
+
+			hotels = L.layerGroup(hotelmarkers);
+			hotels.addTo(map);
+			var overlayMaps = {
+		    "Hotels": hotels
+			};
+
+			var uliegeIcon = L.icon({
+        iconUrl: 'img/logouliege.png',
+				iconAnchor: [30, 25 ],
+      });
+
+			var trainIcon = L.icon({
+        iconUrl: 'img/train.png',
+        iconSize:     [32, 32],
+      });
+
+			var uliege = L.marker([50.641030, 5.575864], {icon: uliegeIcon}).addTo(map);
+			uliege.bindPopup("University of Liège");
+			marker.on('mouseover', function (e) {
+					this.openPopup();
+			});
+			marker.on('mouseout', function (e) {
+					this.closePopup();
+			});
+
+			L.marker([50.624,5.567], {icon: trainIcon}).addTo(map);
+
+
+
+			map.addLayer(OpenStreetMap_Mapnik);
+			L.control.layers(baseMaps, overlayMaps, {autoZIndex:true, collapsed:false}).addTo(map);
+
+		</script>
+		<div> Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+
+
+
+</body></html>
