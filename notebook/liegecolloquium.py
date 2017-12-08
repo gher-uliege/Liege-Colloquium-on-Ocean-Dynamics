@@ -1,6 +1,7 @@
 import os
 import re
 import logging
+import requests
 from collections import Counter
 from geopy.geocoders import Nominatim, ArcGIS, GoogleV3, OpenMapQuest
 import numpy as np
@@ -32,7 +33,7 @@ geocoders = [nominatim, googlev3, arcgis, openmapquest]
 
 class Participant(object):
 
-    def __init__(self, name=None, firstname=None, affiliation=None, city=None, 
+    def __init__(self, name=None, firstname=None, affiliation=None, city=None,
                  country=None, countryname=None):
         self.name = name
         self.firstname = firstname
@@ -42,14 +43,14 @@ class Participant(object):
         self.lon = None
         self.lat = None
         self.countryname = countryname
-    
+
     def __repr__(self):
         return "Participant {0} {1} ({2})".format(self.firstname,
                                                   self.name,
                                                   self.country)
-        
+
     def replace_country(self):
-        dictcountry = {"U.S.A.": "United States of America", 
+        dictcountry = {"U.S.A.": "United States of America",
                        "The Netherlands": "Netherlands",
                        "U.K.": "United Kingdom",
                        "Republic of Burundi": "Burundi",
@@ -114,11 +115,11 @@ class Participant(object):
         Write the participants information into a file
         """
         with open(filename, 'a') as f:
-            f.write(sep.join((self.name, self.firstname, 
+            f.write(sep.join((self.name, self.firstname,
                              self.affiliation, self.country,
                              str(self.lat),
                              str(self.lon), "\n")))
-    
+
     def write_coords_to(self, filename):
         """
         Write the coordinates in a file
@@ -303,3 +304,56 @@ def countries_from_particitant_list(filename):
             line = f.readline().rstrip()
 
     return country_iso_list
+
+def get_clq_list(datafile, valex = -999):
+    """
+    Build lists of years, participants, papers, abstracts and countries
+    from the data file.
+    """
+
+    # start with empty lists
+    Year = []
+    Participants = []
+    Papers = []
+    Abstracts = []
+    Countries= []
+
+    with open(datafile, 'r') as f:
+        # header line
+        line = f.readline()
+        line = f.readline().rstrip().split(",")
+        while len(line) > 1:
+            Year.append(int(line[0]))
+            if line[1] == " ":
+                Participants.append(valex)
+            else:
+                Participants.append(int(line[1]))
+
+            if not line[2].rstrip():
+                Papers.append(valex)
+            else:
+                Papers.append(int(line[2]))
+
+            if not line[3].rstrip():
+                Abstracts.append(valex)
+            else:
+                Abstracts.append(int(line[3]))
+
+            if not line[4].rstrip():
+                Countries.append(valex)
+            else:
+                Countries.append(int(line[4]))
+
+            line = f.readline().rstrip().split(",")
+
+    return Year, Participants, Papers, Abstracts, Countries
+
+def get_participant_file(filename):
+    """
+    Download the data file from github
+    """
+
+    datafileurl = "https://raw.githubusercontent.com/gher-ulg/Liege-Colloquium-on-Ocean-Dynamics/master/data/numParticipant.csv"
+    r = requests.get(datafileurl)
+    with open(filename, 'w') as f:
+        f.write(r.content.decode())
