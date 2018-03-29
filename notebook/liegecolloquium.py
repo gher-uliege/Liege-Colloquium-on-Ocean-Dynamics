@@ -14,6 +14,7 @@ from matplotlib.collections import LineCollection
 from mpl_toolkits.axes_grid.inset_locator import zoomed_inset_axes
 import shapefile
 import pycountry
+import haversine
 from geolite2 import geolite2
 
 arcgis = ArcGIS(timeout=100)
@@ -28,7 +29,7 @@ ch.setLevel(logging.WARNING)
 logloc.addHandler(ch)
 
 # choose and order your preference for geocoders here
-geocoders = [nominatim, googlev3, arcgis, openmapquest]
+geocoders = [nominatim, arcgis, openmapquest]
 
 
 class Participant(object):
@@ -43,11 +44,15 @@ class Participant(object):
         self.lon = None
         self.lat = None
         self.countryname = countryname
+        self.distance = 0
+        self.abbrev = None
+        self.yearlist = []
 
     def __repr__(self):
-        return "Participant {0} {1} ({2})".format(self.firstname,
-                                                  self.name,
-                                                  self.country)
+        return "{0} {1} ({2}): {3} km".format(self.firstname,
+                                              self.name,
+                                              self.country,
+                                              self.distance)
 
     def replace_country(self):
         dictcountry = {"U.S.A.": "United States of America",
@@ -65,6 +70,17 @@ class Participant(object):
                        "Sénégal": "Senegal"}
         for k, v in dictcountry.items():
             self.country = self.country.replace(k, v)
+
+    def abbrev_name(self):
+        self.firstname = "".join(["".join(["{}.".format(yy[0]) for yy in xx.split()]) for xx in list(filter(None, self.firstname.split(".")))])
+        self.abbrev = "".join((self.firstname, self.name))
+
+    def abbrev_oneletter(self):
+        self.firstname = self.firstname[0]
+        self.abbrev = "".join((self.firstname, self.name))
+
+    def get_distance(self, origin=(50.5830803, 5.559063999999999)):
+        self.distance = haversine.haversine(origin, (self.lat, self.lon))
 
     def get_location(self, fillval=-999):
         # Try with different combinations of affiliation, city, country
@@ -119,6 +135,15 @@ class Participant(object):
                              self.affiliation, self.country,
                              str(self.lat),
                              str(self.lon), "\n")))
+
+    def write_name_country_years(self, filename):
+        """
+        Write the name, country and year list of participation
+        """
+        with open(filename, 'a') as f:
+            f.write("{} {} ({}): {}\n".format(self.name, self.firstname,
+                                              self.country, self.yearlist))
+
 
     def write_coords_to(self, filename):
         """
