@@ -12,40 +12,77 @@
 \title{50 years of Colloquium on Ocean Dynamics}
 \begin{document}
 
-\section{Data}
+\section{Data collection}
 
-Participants'information was obtained from the Special Edition available either in electronic or in paper format and organized in 5-column, tab separated ascii files. Such a format allows for an easy ingestion by almost any spreadsheet tool. Every file contains: 
+Most of the participation data were obtained from the Special Edition available either in electronic or in paper format. The fields that were stored are: 
 \begin{enumerate}
 \item The participant name,
 \item their surname initials (necessary for the distinction of authors with the same name),
-\item the institute,
+\item the affiliation,
 \item the city,
 \item the country.
 \end{enumerate}
-While we tried to stay as close as possible to the origin lists, the country names were adapted in order to fit with the existing countries in 2017, using the information of the city when necessary. For example, \textit{Republic of Serbia} instead of \textit{Yugoslavia}; \textit{Estonia} instead of \textit{U.S.R.R}.
-The institute were not entered in a consistent way from year to year. However, almost no editing was performed since the main goal was to determinate the approximate coordinates using the combination of institution, city and country. 
+The information were stored in 5-column, tab separated ascii files. 
+
+\subsection{Pre-processing and quality control}
+
+While we tried to stay as close as possible to the origin lists, the country names were adapted in order to fit with the existing countries in 2017 (according to ???), using the information of the city when necessary. For example, based on the concerned city, \textit{Yugoslavia} was converted \textit{Republic of Serbia}; \textit{U.S.R.R} was converted to \textit{Estonia}.
+
+The affiliations were not registered in a consistent way from year to year. However, almost no editing was performed since the main goal was to determinate the approximate coordinates using the combination of institution, city and country. 
+
+Some discrepancies in the participant names and surnames were detected, for example different initials used in different (but close in time) editions. Whenever possible and also based on the author affiliation, these discrepancies were corrected.
+
+% Maybe add anonymisation prior to distribution via github.
 
 \subsection{Availability}
 
 All the data files are stored in a version control system (VCS) and made available from \url{https://www.github.com}. Readers are encouraged to submit their bug report either through github pull request mechanism or by direct email to the author. 
 
+%-------------------
 \section{Processing}
-
+%-------------------
 This section describes the tools developed to produce the visualization and results presented in the next Section. 
-All the data processing was performed using Python-3.6. As for the data, the tools are made available from the same Github repository.
+All the data processing was performed using Python-3.6. As for the data, the tools are made available from the same GitHub repository.
+
+% Table to summarised the tools emplyed
+
+\begin{tabular}{ccc}
+geopy		& 	geocoding web services		& 	\url{https://pypi.python.org/pypi/geopy}	\\
+\end{tabular}	
 
 \subsection{Geolocalisation}
 
-The objective was to obtain the coordinates of each participant's institution to prepare density maps. In most of the cases the coordinates are properly found using the institute name, city and country, but a difficulty arises when an institute name has changed in the past. To enhance the probability of success, different search engine are used until the coordinates are returned. No test was performed to analyze if the different engines provided different results as the goal is to have approximate coordinates. For each institute, the coordinates obtained by geolocalisation were stored in order to avoid unnecessary calls to the search engine once the place was already located.
+The objective was to obtain the coordinates of each participant's institution to prepare density maps. In most of the cases, the geolocation worked properly using the institute name, city and country, but a difficulty arises when an institute name has changed in the past. To enhance the probability of success, different search engines [WHICH ONES?] were used, until the coordinates are returned. No test was performed to analyze if the different engines provided different results.
+
+For each institute, the coordinates obtained by geolocalisation were stored in order to avoid unnecessary calls to the search engine once the place was already located.
 
 \subsection{Country counting}
 
-The goal is to obtain a dictionary where the keys are the country names and the values are the number of participants during a selected period.
+For each country, we want to know the corresponding number of participants during a selected period. The information is stored in a dictionary where the keys are the country names and the values are the participant numbers. The list of countries adopted is [TO COMPLETE].
 
 
+%-----------------------------------
 \section{Results and visualizations}
+%-----------------------------------
 
-\subsection{Choropleth map}
+
+\begin{tabular}{ccc}
+Marker cluste & \url{https://github.com/Leaflet/Leaflet.markercluster}\\
+\end{tabular}
+
+\subsection{Participation map}
+
+The map (Fig.~\ref{} and \url{}) contains several layers: 
+\begin{enumerate}
+\item[Choropleth], where a different color is attributed to each country according to its total number of participants.
+\item[Marker cluster], where cluster of points are dynamically generated based on the zoom level of the map.
+\item[Single dots], which display a dot at each institute location, independently from the number of participants from that institute.
+\item[Heat map], which provides another way to display the participant density, using colors to represent the values.
+\item[Hexbin], where the hexagonal bins are dynamically generated based on the zoom level and the number of data in each bin is counted.
+\end{enumerate}
+
+
+
 
 3rd colloquium:
 
