@@ -8,6 +8,7 @@
 \usepackage{hyperref}
 \usepackage{fontawesome}
 \usepackage{xcolor}
+\usepackage{stackengine}
 %\usefonttheme{serif}
 \urlstyle{sf}
 
@@ -52,7 +53,7 @@
 
 \parbox{.1\textwidth}{
 \hspace{-.85cm}
-\begin{tikzpicture}[scale=.65]
+\begin{tikzpicture}[scale=.625]
 %\draw[help lines] (0,0) grid (10,10);
 \draw[line width=1pt, bluegher] (0,0) to [out=0, in=150] (5,1) to (5,3) to [out=150, in=0] (0, 2) to (0,0);
 \node (a) at (0.5, 1.15) {\usebeamerfont{projected text}\usebeamercolor[fg]{projected text} 1};
@@ -62,11 +63,11 @@
 \end{tikzpicture}
 }\parbox{.75\textwidth}{\centering
   	
-  \usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\usebeamercolor[bg]{subtitle}\insertsubtitle
+\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\usebeamercolor[bg]{subtitle}\insertsubtitle
   
 }\parbox{.1\textwidth}{
-\hspace*{-.4cm}
-\begin{tikzpicture}[scale=.65]
+\hspace*{-.6cm}
+\begin{tikzpicture}[scale=.625]
 \draw[line width=1pt,bluegher] (0,1) to [out=30, in=180] (5,0) to (5,2) to [out=180, in=30] (0, 3) to (0,1);
 \node (a) at (0.5, 2.2) {\usebeamerfont{projected text} \usebeamercolor[fg]{projected text}2};
 \node (a) at (1.75, 2.) {\usebeamerfont{projected text} \usebeamercolor[fg]{projected text}0};
@@ -105,6 +106,7 @@
 \newcommand{\putlogo}[1]{\includegraphics[height=\figheight]{#1}}
 \newcommand{\putlogolink}[2]{\href{#1}{\xbox{\includegraphics[height=\figheight]{#2}}}}
 \newcommand{\putlogoB}[1]{\includegraphics[height=\figheightB]{#1}}
+\newcommand{\sepauthor}{$\bullet$~}
 
 \DeclareGraphicsExtensions{.eps,.JPG,.jpg,.pdf,.png,.PNG,.jpeg}
 \graphicspath{
@@ -128,6 +130,7 @@
 \date{28~May--1~June, 2018}
 
 \begin{document}
+\def\stackalignment{l}
 
 \begin{frame}[fragile, t]
 \centering
@@ -159,7 +162,19 @@
 
 \maketitle
 
-\vspace{.5cm}
+\vspace*{1cm}
+
+{\scriptsize
+\textcolor{greygher}{\faCalendarCheckO~~~\insertdate}
+}
+\vspace*{-.2cm}
+{\scriptsize
+\textcolor{bluegher}{{\faHome}~~~\url{http://labos.ulg.ac.be/gher/home/colloquium/}}
+%\textcolor{greygher}{\faHome~~~University of Liège - Place du 20-Août, 7 - 4000 Liège - Belgium}\\ 
+}
+
+\vspace*{.5cm}
+
 
 \begin{figure}
 \centering
@@ -168,12 +183,16 @@
 \end{figure}
 %
 %
-{\footnotesize
-\textcolor{greygher}{\faCalendarCheckO~~~\insertdate}\\
-\textcolor{bluegher}{{\ComputerMouse}~~~\url{http://labos.ulg.ac.be/gher/home/colloquium/}}\\
-\textcolor{greygher}{\faHome~~~University of Liège - Place du 20-Août, 7 - 4000 Liège - Belgium}\\ 
-\textcolor{bluegher}{\faEnvelopeO~~~\href{mailto:oceanphys@ulg.ac.be}{oceanphys@ulg.ac.be}}\seplogo\textcolor{greygher}{\faTwitter~~~@GHER\_ULg}\\
-}
+
+\begin{table}
+\centering
+\scriptsize
+\faMicrophone~\textbf{Keynote speakers}\\
+Benoit Cushman-Roisin \sepauthor Anny Cazenave \sepauthor Michael Ghil \sepauthor Mike McPhaden \\ 
+Emil Stanev \sepauthor Julienne Stroeve \sepauthor Karina von Schuckmann \\
+
+\end{table}
+
 
 \vspace{2cm}
 
@@ -204,17 +223,16 @@
 \begin{tikzpicture}[remember picture,overlay]
   \node[anchor=south] at (current page.south) {
   \begin{columns}[totalwidth=1.\textwidth,c]
-\column{.41\textwidth}
+\column{.21\textwidth}
 \scriptsize
 \putlogolink{http://www.ulg.ac.be}{logo_uliege} \seplogo \putlogolink{http://modb.oce.ulg.ac.be/}{logo_gher}
 \column{.02\textwidth}
 ~
-\column{.6\textwidth}
+\column{.8\textwidth}
 \scriptsize
-\putlogolink{http://www.wallonie.be/}{coq_wallon} \seplogo \putlogolink{http://www.fnrs.be/}{logo_fnrs}
+\putlogolink{http://www.wallonie.be/}{coq_wallon} \seplogo \putlogolink{http://www.fnrs.be/}{logo_fnrs}\seplogo \putlogolink{https://www.esa.int/ESA}{logo_esa}\seplogo \putlogolink{https://www.belspo.be/}{logo_belspo} \hfill \stackanchor{\textcolor{bluegher}{\faEnvelopeO~~~\href{mailto:oceanphys@ulg.ac.be}{oceanphys@ulg.ac.be}}}{\textcolor{greygher}{\faTwitter~~~@GHER\_ULg}} \hspace*{1cm}
 \end{columns}
-  
-  };
+};
 \end{tikzpicture}
 
 
