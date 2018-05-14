@@ -60,14 +60,16 @@ class Participant(object):
                        "U.K.": "United Kingdom",
                        "Republic of Burundi": "Burundi",
                        "Belgique": "Belgium",
-                       # "Russia": "Russian Federation",
+                       "Russia": "Russian Federation",
                        "Maroc": "Morocco",
                        "México": "Mexico",
                        "Cameroun": "Cameroon",
-                       "Côte d'Ivoire": "Ivory Coast",
+                       # "Côte d'Ivoire": "Ivory Coast",
                        "Serbia": "Republic of Serbia",
                        "Bulgary": "Bulgaria",
-                       "Sénégal": "Senegal"}
+                       "Sénégal": "Senegal",
+                       "South Korea": "Korea, Republic of",
+                       "Iran": "Iran, Islamic Republic of"}
         for k, v in dictcountry.items():
             self.country = self.country.replace(k, v)
 
@@ -252,7 +254,7 @@ def make_country_map(countrylist, shapefilename, m, figname, year=None,
     # plt.annotate(year, xy=(0.05, 8.5), xycoords='axes fraction', fontsize=30)
 
     plt.savefig(figname, dpi=300, bbox_inches='tight')
-    plt.show()
+    # plt.show()
     plt.close()
 
 
