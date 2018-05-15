@@ -49,10 +49,11 @@ class Participant(object):
         self.yearlist = []
 
     def __repr__(self):
-        return "{0} {1} ({2}): {3} km".format(self.firstname,
+        return "{0} {1} ({2}): {3} km, {4}".format(self.firstname,
                                               self.name,
                                               self.country,
-                                              self.distance)
+                                              self.distance,
+                                              self.yearlist)
 
     def replace_country(self):
         dictcountry = {"U.S.A.": "United States of America",
