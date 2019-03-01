@@ -18,10 +18,8 @@
 
 \usepackage{fontspec}
 \defaultfontfeatures{Ligatures=TeX}
-\setmainfont[Path = /home/ctroupin/.fonts/]{Cube-Regular2}
-%\setmainfont{Droid Sans}
-%\setsansfont{Droid Sans}
-\setsansfont[Path = /home/ctroupin/.fonts/]{Cube-Regular2}
+\setmainfont[Path = /home/ctroupin/.fonts/]{TitilliumMaps29L-800wt.otf}
+\setsansfont[Path = /home/ctroupin/.fonts/]{TitilliumMaps29L-800wt.otf}
 \setromanfont[Path = /home/ctroupin/.fonts/]{DINM2}
 
 \definecolor{bluegher}{RGB}{4,99,128}  		% blue 
@@ -77,12 +75,12 @@
 
 \DeclareGraphicsExtensions{.eps,.JPG,.jpg,.pdf,.png,.PNG,.jpeg}
 \graphicspath{
-{./logos/},
+{../logos/},
 }
 
 \parindent 0cm
 
-\usebackgroundtemplate{\tikz\node[opacity=0.2]{\parbox[c][\paperheight][c]{\paperwidth}{\hspace{-.25cm}\includegraphics[width=1.05\paperwidth]{./background2.jpg}}};}
+\usebackgroundtemplate{\tikz\node[opacity=0.2]{\parbox[c][\paperheight][c]{\paperwidth}{\hspace{-.25cm}\includegraphics[width=1.05\paperwidth]{../figures/background2.jpg}}};}
 
 \addtobeamertemplate{background}{}{%
 \begin{tikzpicture}[remember picture,overlay]
@@ -132,7 +130,7 @@
 \column{.5\textwidth}
 
 \begin{tikzpicture}[spy using outlines={circle,greygher,magnification=5,size=1.5cm, connect spies}]
-\node[anchor=south west,inner sep=0] (image) at (0,0) {\pgfimage[interpolate=true,width=.6\textwidth]{main_fig2_resize3}};
+\node[anchor=south west,inner sep=0] (image) at (0,0) {\pgfimage[interpolate=true,width=.6\textwidth]{../figures/main_fig2_resize3}};
    
     \begin{scope}[x={(image.south east)},y={(image.north west)}]
 %    \draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1.2,1.2);
