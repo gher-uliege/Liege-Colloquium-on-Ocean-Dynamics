@@ -82,7 +82,7 @@
 
 \parindent 0cm
 
-\usebackgroundtemplate{\tikz\node[opacity=0.6]{\parbox[c][.3\paperheight][c]{\paperwidth}{\hspace{-.25cm}\includegraphics[width=1.05\paperwidth]{images/banner_oceano_chimique.jpg}}};}
+\usebackgroundtemplate{\tikz\node[opacity=0.6]{\parbox[c][.3\paperheight][c]{\paperwidth}{\hspace{-2cm}\includegraphics[height=4.8cm]{images/2019/banner02}\includegraphics[height=4.8cm]{images/2019/banner01}\includegraphics[height=4.8cm]{images/2019/banner03}\includegraphics[height=4.8cm]{images/2019/banner05}\includegraphics[height=4.8cm]{images/2019/banner04}}};}
 
 % These lines to keep good colors when viewed with Acrobat Reader
 \makeatletter%
@@ -93,7 +93,7 @@
 %\url{www.socib.es}}
 \subtitle{facing changes}
 \title{Polar Ocean}
-\date{6--10~May, 2019}
+\date{6--9~May, 2019}
 
 \begin{document}
 \def\stackalignment{l}
@@ -112,7 +112,7 @@
 \coordinate (tp4) at ([yshift=-1cm, xshift=0cm]current page.north east);
 
 \coordinate (tp5) at ([xshift=-1cm]current page.south west);
-\coordinate (tp6) at ([xshift=-1cm,yshift=\figheight+1.2cm	]current page.south west);
+\coordinate (tp6) at ([xshift=-1cm,yshift=\figheight+1.2cm]current page.south west);
 \coordinate (tp7) at ([xshift=1cm,yshift=\figheight+1.2cm]current page.south east);
 \coordinate (tp8) at ([xshift=1cm]current page.south east);
 
@@ -120,7 +120,7 @@
 
 \draw[draw=blueice,opacity=0.7,snake it,thick] (tp5)--(tp6)--(tp7)--(tp8)--cycle;
 
-\shade[top color=bluegher,bottom color=white,opacity=0.7] (tp1)--(tp2)--(tp3)--(tp4)--cycle;
+\shade[top color=bluegher,bottom color=white,opacity=0.4] (tp1)--(tp2)--(tp3)--(tp4)--cycle;
 
 \node[anchor=north east,yshift=-35pt,xshift=-.5cm] at (current page.north east) {\includegraphics[height=.05\textheight]{logo_colloquium}};
 
@@ -129,11 +129,11 @@
 \begin{center}
 
 
-{\usebeamerfont{title}\inserttitle}
+{\shadowcolor{white}\usebeamerfont{title}\shadowtext{\inserttitle}}
 
-\vspace{.05cm}
+%\vspace{.05cm}
 
-\shadowoffsetx{3pt}\shadowoffsety{3pt}
+\shadowoffsetx{3pt}\shadowoffsety{3pt}\shadowcolor{white}
 \usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\usebeamercolor[bg]{subtitle}\shadowtext{\insertsubtitle}
 
 \end{center}
@@ -167,19 +167,19 @@ Assessing impacts
 \column{0.5\paperwidth}
 \centering
 
-\vspace*{.3cm}
+\vspace*{.1cm}
 \footnotesize 51st International Liege Colloquium on Ocean Dynamics
-\vspace*{.3cm}
+\vspace*{.1cm}
 
 \begin{figure}
-\includegraphics[width=.85\textwidth,cfbox=bluegher 2pt 2pt]{../figures/background2019.jpg}
+\includegraphics[width=.85\textwidth,cfbox=bluegher 2pt 2pt]{../images/DSC_0341.jpg}
 \end{figure}
 
 {\scriptsize
 \textcolor{greygher}{{\faCalendarCheckO}~~\insertdate}\\
 \textcolor{bluegher}{{\faHome}~~\url{http://labos.ulg.ac.be/gher/home/colloquium/}}\\
 \textcolor{greygher}{{\faMapPin}~~University of Liège - Place du 20-Août, 7 - 4000 Liège - Belgium}\\
-\fcolorbox{black}{bluegher}{\textcolor{white}{\faWarning~~Deadline for abstracts: 15th March 2019}}
+%\fcolorbox{black}{bluegher}{\textcolor{white}{\faWarning~~Deadline for abstracts: 15th March 2019}}
 }
 
 
@@ -232,8 +232,8 @@ Future changes
   \begin{columns}[totalwidth=1.\textwidth,c]
 \column{.7\textwidth}
 \scriptsize
-\putlogolink{http://www.ulg.ac.be}{logo_uliege} \putlogolink{http://labos.ulg.ac.be/oceanologie/}{images/logo_oceano_short} 
-\seplogo \putlogolink{http://modb.oce.ulg.ac.be/}{logo_gher} \seplogo\seplogo\seplogo\seplogo \putlogolink{http://www.wallonie.be/}{coq_wallon} \seplogo \putlogolink{http://www.fnrs.be/}{logo_fnrs}\seplogo \putlogolink{https://www.belspo.be/}{logo_belspo}
+\putlogolink{https://www.focus.uliege.be/cms/c_3350952/en/focus-portail}{logo_focus} \putlogolink{http://labos.ulg.ac.be/oceanologie/}{images/logo_oceano_short} 
+\seplogo \putlogolink{http://labos.ulg.ac.be/gher/}{logo_gher} \seplogo\seplogo\seplogo\seplogo \putlogolink{http://www.wallonie.be/}{coq_wallon} 
 \column{.02\textwidth}
 ~
 \column{.265\textwidth}
