@@ -17,6 +17,10 @@ import pycountry
 import haversine
 from geolite2 import geolite2
 
+import warnings
+import matplotlib.cbook
+warnings.filterwarnings("ignore",category=matplotlib.cbook.mplDeprecation)
+
 arcgis = ArcGIS(timeout=100)
 nominatim = Nominatim(timeout=100)
 googlev3 = GoogleV3(timeout=100)

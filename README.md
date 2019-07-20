@@ -1,8 +1,8 @@
 # Liège Colloquium on Ocean Dynamics
 
-Started in 2016, this project was meant to store the [LaTeX](./latex) files used to create the colloquium poster for the [2016 edition](http://modb.oce.ulg.ac.be/?page=colloquium&year=2016). It has evolved into a more consistent repository with a few [Jupyter notebooks](./notebooks) designed to prepare figures and illustrations for the Colloquium and that could be re-used for future editions, hopefully.
+Started in 2016, this project was meant to store the [LaTeX](./latex) files used to create the colloquium poster for the [2016 edition](http://modb.oce.ulg.ac.be/?page=colloquium&year=2016). It has evolved into a more consistent repository with a few [`Jupyter` notebooks](./notebooks) designed to prepare figures and illustrations for the Colloquium and that could be re-used for future editions, hopefully.
 
-For the 50th Edition (2018), the plan is to have an overview of the previous editions in terms of countries, topics and participants.
+For the 50th Edition (2018), the plan was to have an overview of the previous editions in terms of countries, topics and participants.
 
 ## Directories
 
